@@ -1,0 +1,54 @@
+﻿@model Report_a_Fault.Models.Computer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Computer</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ComputerNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ComputerNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lab)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lab.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Computer_Comps)
+        </dt>
+        <dd class = "col-sm-10">
+          
+            @foreach(var item in Model.Computer_Comps)
+            {
+                @Html.DisplayFor(model => item.Name)
+                <br />
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ComputerComponentStatus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ComputerComponentStatus)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="ReportFault" asp-controller="Fault" asp-route-id="@Model.Id">ReportFault</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index" asp-controller="Lab">Back to Lab</a>
+</div>

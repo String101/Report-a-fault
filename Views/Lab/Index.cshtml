@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Report_a_Fault.Models.Labs>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Campus Computer Labs</h1>
+@if(User.IsInRole(SD.Role_Super_Admin))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+
+            <td>@item.LabNumber</td>
+                <td>@item.Campus.CampusName</td>
+            <td>
+                <a asp-action="Index" asp-controller="Computer" asp-route-id="@item.LabNumber">Lab Computers</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

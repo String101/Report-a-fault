@@ -1,0 +1,46 @@
+﻿@model Report_a_Fault.Models.Fault
+
+@{
+    ViewData["Title"] = "ReportFault";
+}
+
+<h1>ReportFault</h1>
+
+<h4>Fault</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ReportFault">
+            <input asp-for="Id" hidden class="form-control" />
+            <input asp-for="computerId" hidden class="form-control" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Computer.ComputerNumber" class="control-label"></label>
+                <input asp-for="Computer.ComputerNumber" disabled class="form-control" />
+                <span asp-validation-for="Computer.ComputerNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Computer.LabId" class="control-label"></label>
+                <input asp-for="Computer.LabId" disabled class="form-control" />
+                <span asp-validation-for="Computer.LabId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FaultDescription" class="control-label"></label>
+                <textarea asp-for="FaultDescription" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="FaultDescription" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report a Fault", "Report a Fault.csproj", "{2CAC6061-4595-48AE-854C-93B1A8B6975D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CAC6061-4595-48AE-854C-93B1A8B6975D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CAC6061-4595-48AE-854C-93B1A8B6975D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CAC6061-4595-48AE-854C-93B1A8B6975D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CAC6061-4595-48AE-854C-93B1A8B6975D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {162C6BCC-4E7B-4BA8-9140-4D942CED18D1}
+	EndGlobalSection
+EndGlobal

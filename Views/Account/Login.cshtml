@@ -1,0 +1,47 @@
+﻿@model LoginVM
+
+
+<link rel="stylesheet" href="~/css/styles.css" />
+<link rel="stylesheet" href="~/css/register.css" />
+<link rel="stylesheet" href="~/css/queries.css" />
+
+<section class="container-register">
+    <h2 class="heading-secondary">Login</h2>
+    <span class="subheading">welcome back</span>
+    <form class="login-form" method="post">
+        <input asp-for="@Model.RedirectUrl" hidden />
+        <div class="form-items">
+            <label class="form-label">Email/Username</label>
+            <input placeholder="example@AppDomain.com" asp-for="@Model.Email" class="form-control" aria-required="true" />
+
+        </div>
+        <div class="form-items">
+            <label class="form-label">Password</label>
+            <input asp-for="@Model.Password" class="form-control" aria-required="true" />
+
+        </div>
+        <div class="check-input">
+            <label>
+                Remember Me
+            </label>
+            <input asp-for="@Model.RememberMe" class="check-input" />
+
+        </div>
+        <div>
+            <button class="btn btn-form" type="submit">Log in</button>
+        </div>
+        <div class="d-flex align-items-center justify-content-between pt-2">
+            <p>
+                <a class="login-options" asp-action="ForgotPassword">Forgot your password?</a>
+            </p>
+            <p>
+                <a class="login-options" asp-action="Register" asp-route-returnUrl="@Model.RedirectUrl">Register as a new user</a>
+            </p>
+        </div>
+    </form>
+</section>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

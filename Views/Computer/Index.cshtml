@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Report_a_Fault.Models.Computer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Computers Per Lab</h1>
+@if(User.IsInRole(SD.Role_Intern))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Lab.Campus.CampusName)
+            </th>
+         
+            <th>
+                @Html.DisplayNameFor(model => model.Lab.LabNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComputerNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComputerComponentStatus)
+            </th>
+          
+            <th>
+               Components
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lab.Campus.CampusName)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lab.LabNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComputerNumber)
+             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComputerComponentStatus)
+            </td>
+          
+            <td>
+
+                    <a asp-action="Index" asp-controller="ComputerComp" asp-route-id="@item.LabId" asp-route-computerNumber="@item.ComputerNumber">Computer Emenities</a>
+            </td>
+            <td>
+                    @if (User.IsInRole(SD.Role_Student_Assistant))
+                    {
+                        <a asp-action="ReportFault" asp-controller="Fault" asp-route-id="@item.Id">Fault Report</a>
+                    }
+                  
+                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+         
+               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

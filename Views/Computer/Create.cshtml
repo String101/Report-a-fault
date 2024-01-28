@@ -1,0 +1,39 @@
+﻿@model ComputerVM
+
+@{
+    ViewData["Title"] = "create";
+}
+
+<h1>create</h1>
+
+<h4>Labs</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="create">
+            <input asp-for="Computer.Id" hidden />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.Computer.ComputerNumber" class="control-label"></label>
+                <input asp-for="@Model.Computer.ComputerNumber class=" form-control" />
+                <span asp-validation-for="@Model.Computer.ComputerNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Computer.LabId" class="control-label"></label>
+                <select asp-for="@Model.Computer.LabId" asp-items="@Model.LabList" class="form-select border shadow">
+                    <option disabled selected>--Select Lab--</option>
+                </select>
+                
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

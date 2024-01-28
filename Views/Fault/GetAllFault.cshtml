@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Report_a_Fault.Models.Fault>
+
+@{
+    ViewData["Title"] = "GetAllFault";
+}
+
+<h1>GetAllFault</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FaultDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Computer.ComputerNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Computer.Lab.LabNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FaultDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Computer.ComputerNumber)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Computer.Lab.LabNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Computer.Lab.Campus.CampusName)
+                </td>
+            <td>
+                    <a asp-action="UpdateComputerStatus" asp-route-id="@item.computerId">fault Status Update</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

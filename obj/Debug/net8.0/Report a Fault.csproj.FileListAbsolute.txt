@@ -1,0 +1,76 @@
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\appsettings.json
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Report a Fault.staticwebassets.runtime.json
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Report a Fault.exe
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Report a Fault.deps.json
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Report a Fault.runtimeconfig.json
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Report a Fault.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Report a Fault.pdb
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\Report a Fault.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\Report a Fault.AssemblyInfoInputs.cache
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\Report a Fault.AssemblyInfo.cs
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\Report a Fault.csproj.CoreCompileInputs.cache
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\Report a Fault.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\Report a Fault.RazorAssemblyInfo.cache
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\Report a Fault.RazorAssemblyInfo.cs
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\staticwebassets\msbuild.Report a Fault.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\staticwebassets\msbuild.build.Report a Fault.props
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Report a Fault.props
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Report a Fault.props
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\scopedcss\bundle\Report a Fault.styles.css
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\scopedcss\projectbundle\Report a Fault.bundle.scp.css
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\Report a Fault.dll
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\refint\Report a Fault.dll
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\Report a Fault.pdb
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\Report a Fault.genruntimeconfig.cache
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\ref\Report a Fault.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Azure.Core.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Azure.Identity.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\System.Drawing.Common.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\System.Memory.Data.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\System.Runtime.Caching.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\System.Security.Permissions.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\System.Windows.Extensions.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\thusi\Downloads\Report a Fault\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\Report a Fault.csproj.AssemblyReference.cache
+C:\Users\thusi\Downloads\Report a Fault\obj\Debug\net8.0\Report a Fault.csproj.CopyComplete

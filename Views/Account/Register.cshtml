@@ -1,0 +1,64 @@
+﻿@model RegisterVM
+
+
+<link rel="stylesheet" href="~/css/styles.css" />
+<link rel="stylesheet" href="~/css/register.css" />
+<link rel="stylesheet" href="~/css/queries.css" />
+
+
+<div class="container-register">
+    <h2 class="heading-secondary">Sign Up</h2>
+    <span class="subheading">please provide the following information below</span>
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <form class="register-form" method="post">
+        <div class="form-items">
+            <label class="ms-2 text-muted">Name</label>
+            <input asp-for="@Model.Name" class="form-control" />
+            <span class="validation" asp-validation-for="Name"></span>
+        </div>
+        <div class="form-items">
+            <label class="ms-2 text-muted">Surname</label>
+            <input asp-for="@Model.Surname" class="form-control" />
+            <span class="validation" asp-validation-for="Name"></span>
+        </div>
+        <div class="form-items">
+            <label class="ms-2 text-muted">Email</label>
+            <input placeholder="example@domain.com"
+                   asp-for="@Model.Email"
+                   class="form-control"
+                   aria-required="true" />
+            <span class="validation" asp-validation-for="Email"></span>
+        </div>
+
+        <div class="form-items">
+            <label class="ms-2 text-muted">Password</label>
+            <input asp-for="@Model.Password" class="form-control" />
+            <span class="validation" asp-validation-for="Password"></span>
+        </div>
+        <div class="form-items">
+            <label class="ms-2 text-muted">Confirm Password</label>
+            <input asp-for="@Model.ConfirmPassword" class="form-control" />
+            <span class="validation" asp-validation-for="ConfirmPassword"></span>
+        </div>
+        <div class="form-items">
+            <label class="ms-2 text-muted">Role</label>
+            <select asp-for="Role" class="form-control">
+               <option value="@SD.Role_Super_Admin">@SD.Role_Super_Admin</option>
+               <option value="@SD.Role_Admin">@SD.Role_Admin</option>
+           </select>
+           <span class="validation" asp-validation-for="Role"></span>
+        </div>
+        <div class="form-items">
+            <label class="ms-2 text-muted">Campus</label>
+            <select asp-for="CampusId" asp-items="@Model.CampusList" class="form-control">
+            </select>
+            <span class="validation" asp-validation-for="CampusId"></span>
+        </div>
+        <div></div>
+       
+        <div></div>
+        <div class="form-items">
+            <button type="submit" class="btn btn-form">Register</button>
+        </div>
+    </form>
+</div>

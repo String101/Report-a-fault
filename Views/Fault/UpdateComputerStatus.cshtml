@@ -1,0 +1,61 @@
+﻿@model Report_a_Fault.Models.Computer
+
+@{
+    ViewData["Title"] = "UpdateComputerStatus";
+}
+
+<h1>UpdateComputerStatus</h1>
+
+<h4>Computer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateComputerStatus">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Lab" />
+            <div class="form-group">
+                <label asp-for="ComputerNumber" class="control-label"></label>
+                <input asp-for="ComputerNumber" disabled class="form-control" />
+                <span asp-validation-for="ComputerNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LabId" class="control-label"></label>
+                <input asp-for="LabId" disabled class="form-control" />
+                <span asp-validation-for="LabId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedDate" class="control-label"></label>
+                <input asp-for="CreatedDate" disabled class="form-control" />
+                <span asp-validation-for="CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdatedDate" class="control-label"></label>
+                <input asp-for="UpdatedDate" disabled class="form-control" />
+                <span asp-validation-for="UpdatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComputerComponentStatus" class="control-label"></label>
+                <select class="form-select" asp-for="ComputerComponentStatus">
+                  
+                    <option value="@SD.StatusHealty">@SD.StatusHealty</option>
+                    <option value="@SD.StatusFaulty">@SD.StatusFaulty</option>
+                    <option value="@SD.StatusFixInProgress">@SD.StatusFixInProgress</option>
+                    
+                </select>
+                <span asp-validation-for="ComputerComponentStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
