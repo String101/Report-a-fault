@@ -179,17 +179,7 @@ namespace Report_a_Fault.Controllers
 
                     _logger.Log(LogLevel.Warning, passwordResetLink);
 
-                    //var apiKey = "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";
-                    //var client = new SendGridClient(apiKey);
-                    //var from = new EmailAddress("support@therentalguy.co.za", "Fundanathi Upgrading NO-REPLY");
-                    //var subject = "Reset Password link";
-                    //var to = new EmailAddress(user.Email, user.Username);
-                    //var plainTextContent = "";
-                    //// Include the password reset link in the HTML content
-                    //var htmlContent = $"<p>Click the link below to reset your password:</p><p><a href='{passwordResetLink}'>{passwordResetLink}</a></p>";
-
-                    //var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-                    //var response = await client.SendEmailAsync(msg);
+                 
 
                     return View("ForgetPasswordConfirmation");
                 }
