@@ -2,53 +2,72 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "_AdminLayout";
 }
-
-<h1>Details</h1>
+@for (var i = 0; i < 5; i++)
+{
+    <div></div>
+    <br />
+}
+<h1 class="heading-tetiary">REVIEW COMPUTER : @Model.ComputerNumber</h1>
 
 <div>
-    <h4>Computer</h4>
+  
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ComputerNumber)
+        <dt class = "col-sm-8">
+            BUILDING NAME
         </dt>
+        <div></div>
+        <br />
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lab.Building.BuildingName)
+        </dd>
+        <div></div>
+        <br />
+        <dt class = "col-sm-8">
+            LABORATORY
+        </dt>
+        <div></div>
+        <br />
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lab.LabNumber)
+        </dd>
+        <div></div>
+        <br />
+        <dt class = "col-sm-8">
+            COMPUTER NUMBER
+        </dt>
+        <div></div>
+        <br />
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ComputerNumber)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Lab)
+        <div></div>
+        <br />
+        <dt class="col-sm-2">
+            STATUS
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Lab.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Computer_Comps)
-        </dt>
-        <dd class = "col-sm-10">
-          
-            @foreach(var item in Model.Computer_Comps)
-            {
-                @Html.DisplayFor(model => item.Name)
-                <br />
-            }
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ComputerComponentStatus)
-        </dt>
-        <dd class = "col-sm-10">
+        <div></div>
+        <br />
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ComputerComponentStatus)
         </dd>
+        <div></div>
+        <br />
+        <dt class="col-sm-8">
+            COMPUTER COMPONENTS
+        </dt>
+        <div></div>
+        <br />
+        @foreach(var u in Model.Computer_Comps)
+        {
+            <dd class="col-sm-10">
+               * @Html.DisplayFor(model => u.Name)
+            </dd>
+           
+        }
+       
     </dl>
 </div>
-<div>
-    <a asp-action="ReportFault" asp-controller="Fault" asp-route-id="@Model.Id">ReportFault</a> |
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index" asp-controller="Lab">Back to Lab</a>
-</div>
+

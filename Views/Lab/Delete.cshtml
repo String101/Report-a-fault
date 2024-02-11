@@ -2,20 +2,43 @@
 
 @{
     ViewData["Title"] = "Delete";
+    Layout = "_AdminLayout";
 }
+@for (var i = 0; i < 5; i++)
+{
+    <div></div>
+    <br />
+}
+<h1 class="heading-tetiary">Delete</h1>
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
+<h3 class="subheading">Are you sure you want to delete this?</h3>
 <div>
-    <h4>Labs</h4>
-    <hr />
-    <dl class="row">
-    </dl>
     
+    <dl class="row">
+        <dt class="col-sm-8">
+            BUILDING NAME
+        </dt>
+        <div></div>
+        <br />
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Building.BuildingName)
+        </dd>
+        <dt class="col-sm-8">
+            LABORATORY NUMBER
+        </dt>
+        <div></div>
+        <br />
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LabNumber)
+        </dd>
+       
+    </dl>
+    <div></div>
+    <br />
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="hidden" asp-for="BuildingId" />
+        <input type="submit" value="Delete" class="btn btn-dark" />
     </form>
+   
 </div>

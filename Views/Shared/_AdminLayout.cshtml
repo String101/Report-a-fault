@@ -1,0 +1,146 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Report_a_Fault.Interface
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject IUnitOfWork _unitOfWork;
+
+@{
+    Layout = null;
+    var a = _unitOfWork.Fault.GetAll();
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="apple-touch-icon" sizes="180x180" href="~/favicon_package_v0.16/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/favicon_package_v0.16/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/favicon_package_v0.16/favicon-16x16.png">
+    <link rel="manifest" href="~/favicon_package_v0.16/site.webmanifest">
+    <link rel="mask-icon" href="~/favicon_package_v0.16/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>_AdminLayout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <link rel="stylesheet" href="~/Upgrading.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+@*     <link rel="stylesheet" href="~/css/queries.css" /> *@
+    <link rel="stylesheet" href="~/css/fundanathi.css">
+    <link rel="stylesheet" href="~/css/admin.css">
+</head>
+<body>
+    <div class="dashboard">
+        <nav class="admin-nav">
+            <img src="~/images/transparent.png" height="200px" />
+           
+            <ul class="main-admin-nav-list">
+                <li class="main-admin-nav-link">
+                    <ion-icon class="admin-icon" name="laptop-outline"></ion-icon>
+                    <a asp-action="Index" onclick="show()" asp-controller="Building">Computer Management</a>
+                </li>
+                <hr />
+                @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Super_Admin) || User.IsInRole(SD.Role_Intern) || User.IsInRole(SD.Role_Student_Assistant))
+                {
+                    <li class="main-admin-nav-link">
+                        <ion-icon class="admin-icon" name="laptop-outline"></ion-icon>
+                        <a asp-controller="Fault" onclick="show()" asp-action="GetAllFault">Reported Fault</a>
+                        <div class="ann-count">@a.Count()</div>
+                    </li>
+                    <hr />
+                }
+
+                @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Super_Admin))
+                {
+                    <li class="main-admin-nav-link">
+                        <ion-icon class="admin-icon" name="people-outline"></ion-icon>
+                        <a asp-controller="Account" onclick="show()" asp-action="AddUser">Add Employee</a>
+                    </li>
+                    <hr />
+                    <li class="main-admin-nav-link">
+                        <ion-icon class="admin-icon" name="people-outline"></ion-icon>
+                        <a asp-controller="Account" onclick="show()" asp-action="GetAllEmployees">Employees</a>
+                    </li>
+                    <hr />
+                }
+
+
+
+                <li class="main-admin-nav-link">
+                    <a class="icon-logout" asp-controller="Account" asp-action="Logout"><ion-icon name="log-out-outline"></ion-icon> logout</a>
+                </li>
+
+            </ul>
+        </nav>
+        <div class="main-content">
+            @RenderBody()
+        </div>
+
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script src="https://jsuites.net/v4/jsuites.js"></script>
+        <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+        @if (@TempData["Success"] != null)
+        {
+            <script>
+
+
+                jSuites.notification({
+                    name: 'Notification',
+                    message: '@TempData["Success"]',
+                });
+
+            </script>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <script>
+                jSuites.notification({
+                    error: 1,
+                    name: 'Error message',
+                    message: '@TempData["error"]',
+                });
+            </script>
+        }
+        <script>
+            var show = function () {
+                // Show the loading spin
+                jSuites.loading.show();
+                // Hide the loading spin after two seconds
+                setTimeout(function () {
+                    // Hide
+                    jSuites.loading.hide();
+                }, 2000);
+            }
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('.toggle').change(function () {
+                    var id = $(this).closest('tr').find('[name="Id"]').val();
+                    var updatedEnabled = $(this).prop('checked');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/Account/UpdateEnabled', // Adjust the URL to your controller/action
+                        data: { id: id, updatedEnabled: updatedEnabled },
+                        success: function () {
+                            // Optional: Handle success if needed
+                        },
+                        error: function (xhr, status, error) {
+                            // Optional: Handle error if needed
+                            console.error(xhr.responseText);
+                        }
+                    });
+                });
+            });
+        </script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </div>
+
+</body>
+</html>

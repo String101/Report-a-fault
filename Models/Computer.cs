@@ -12,13 +12,15 @@ namespace Report_a_Fault.Models
         [Display(Name = "Computer Number")]
         [MinLength(2)]
         public string ComputerNumber { get; set; }
-        [ForeignKey("Lab")]
+       
         public string LabId { get; set; }
         [ValidateNever]
         public Labs Lab { get; set; }
         [ValidateNever]
         public IEnumerable<Computer_comp> Computer_Comps { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime? CreatedDate { get; set; } = DateTime.Now;
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime? UpdatedDate { get; set; }
         public string ComputerComponentStatus { get; set; } = SD.StatusHealty;
     }

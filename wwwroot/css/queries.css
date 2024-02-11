@@ -1,0 +1,302 @@
+/* GENERAL COMPONENTS */
+
+@media (max-width: 84em) {
+    .hero {
+        max-width: 120rem;
+    }
+
+    .heading-primary {
+        font-size: 4.4rem;
+    }
+}
+
+@media (max-width: 75em) {
+    html {
+        font-size: 56.25%;
+    }
+
+    .heading-secondary {
+        font-size: 3.6rem;
+    }
+
+    .grid {
+        column-gap: 4.8rem;
+        row-gap: 6.4rem;
+    }
+
+    .header {
+        padding: 0 3.2rem;
+    }
+
+    .hero {
+        gap: 4.8rem;
+    }
+
+    .main-nav-list {
+        gap: 3.2rem;
+    }
+
+    .btn-form {
+        grid-column: span 1;
+        justify-self: start;
+        width: 90%;
+    }
+}
+
+@media (max-width: 56em) {
+    html {
+        font-size: 50%;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 0 8rem;
+    }
+
+    .hero-text-box {
+        text-align: center;
+    }
+
+    .hero-description {
+        padding: 0 7.2rem;
+    }
+
+    .cta {
+        grid-template-columns: 3fr 2fr;
+    }
+
+    .cta-form {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-form {
+        margin-top: 1.2rem;
+    }
+
+    .btn-mobile-nav {
+        display: block;
+        z-index: 1000;
+    }
+
+    .main-nav {
+        background-color: rgb(0, 0, 0, 0.97);
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(100%);
+        transition: all 0.5s ease-in;
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+    }
+
+    .nav-open .main-nav {
+        opacity: 1;
+        background-color: #fff;
+        pointer-events: auto;
+        visibility: visible;
+        transform: translateX(0);
+    }
+
+
+
+
+
+    .main-nav-list {
+        flex-direction: column;
+        justify-items: start;
+        gap: 4.8rem;
+        color: #333;
+    }
+
+    .main-nav-link:link,
+    .main-nav-link:visited {
+        font-size: 3rem;
+    }
+
+    .nav-open .icon-mobile-nav[name="close-outline"] {
+        display: block;
+    }
+
+    .nav-open .icon-mobile-nav[name="menu-outline"] {
+        display: none;
+    }
+}
+
+@media (max-width: 44rem) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .heading-secondary {
+        margin-bottom: 4.8rem;
+    }
+
+    .cta {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-col {
+        grid-row: 1;
+    }
+}
+
+@media (max-width: 38em) {
+    .grid {
+        align-items: center;
+        row-gap: 1.2rem;
+    }
+
+    .grid-2-cols {
+        grid-template-columns: 1fr;
+    }
+
+
+
+    .section-features-landlords .feature-card {
+        min-height: 200px;
+    }
+
+    .section-features-tenants .feature-card {
+        min-height: 200px;
+    }
+
+    .hero {
+        padding: 0 3.2rem;
+    }
+
+    .btn,
+    .btn:link,
+    .btn:visited {
+        padding: 2.4rem 1.2rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .hero-description {
+        padding: 0;
+    }
+
+    .box-img {
+        justify-self: center;
+        width: 100%;
+    }
+
+    .img-box {
+        height: 220px;
+    }
+
+        .img-box:nth-child(2) {
+            grid-row: 1;
+        }
+
+    .section-how {
+        padding: 10.6rem 0 1.2rem;
+    }
+
+    .cta-image-box {
+        height: 32rem;
+        grid-row: 1;
+    }
+
+    .external-provider {
+        flex-direction: column;
+    }
+
+    .external-provider-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-form input {
+        width: 100%;
+    }
+
+    .btn,
+    .btn-form {
+        width: 100%;
+    }
+
+    .external-provider-btn .btn,
+    .btn--full {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .img-box::before {
+        width: 30%;
+        padding-bottom: 30%;
+    }
+
+    .img-box::after {
+        width: 20%;
+        padding-bottom: 20%;
+    }
+
+    .text-box {
+        height: 380px;
+    }
+
+    .grid-3-cols {
+        grid-template-columns: 1fr;
+    }
+
+    .princing-plan--starter {
+        justify-self: center;
+    }
+
+    .princing-plan--complete {
+        justify-self: center;
+    }
+
+    .svg {
+        display: none;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        font-size: 1.3rem;
+    }
+
+    .standard-bank-logo {
+        width: 10%;
+        height: 10%;
+    }
+
+    .standard-bank {
+        font-size: 1rem;
+    }
+
+    .apply-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .form-items {
+        width: 100%;
+    }
+
+        .form-items input {
+            width: 100%;
+        }
+
+    .register-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container-apply {
+        padding: 4rem;
+    }
+
+    .container-register {
+        padding: 4rem;
+    }
+}

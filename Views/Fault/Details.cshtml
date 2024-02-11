@@ -1,0 +1,136 @@
+﻿@model Report_a_Fault.Models.Fault
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_AdminLayout";
+}
+
+@for (var i = 0; i < 5; i++)
+{
+    <div></div>
+    <br />
+}
+<h1 class="heading-tetiary">REVIEW REPORT REFERENCE : @Model.Id</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-8">
+            CAMPUS NAME
+        </dt>
+        <div></div>
+        <br />
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Computer.Lab.Building.Campus.CampusName)
+        </dd>
+        <div></div>
+        <br />
+        <dt class = "col-sm-8">
+            BUILDING NAME
+        </dt>
+        <div></div>
+        <br />
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Computer.Lab.Building.BuildingName)
+        </dd>
+        <div></div>
+        <br />
+        <dt class = "col-sm-8">
+            LABORATORY
+        </dt>
+        <div></div>
+        <br />
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Computer.Lab.LabNumber)
+        </dd>
+        <div></div>
+        <br />
+        <dt class = "col-sm-8">
+            COMPUTER NUMBER
+        </dt>
+        <div></div>
+        <br />
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Computer.ComputerNumber)
+        </dd>
+        <div></div>
+        <br />
+        @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Super_Admin))
+        {
+            <dt class="col-sm-8">
+                REPORTED BY
+            </dt>
+            <div></div>
+            <br />
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.StudentEmail)
+            </dd>
+            <div></div>
+            <br />
+            <dt class="col-sm-8">
+                REPORTED DATE
+            </dt>
+            <div></div>
+            <br />
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DateReported)
+            </dd>
+            <div></div>
+            <br />
+            <dt class="col-sm-8">
+                ATTENDED BY
+            </dt>
+            <div></div>
+            <br />
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.InternEmail)
+            </dd>
+            <div></div>
+            <br />
+            <dt class="col-sm-8">
+                ATTENDED DATE
+            </dt>
+            <div></div>
+            <br />
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DateUpdate)
+            </dd>
+            <div></div>
+            <br />
+        }
+        
+        <dt class="col-sm-8">
+            STATUS
+        </dt>
+        <div></div>
+        <br />
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Computer.ComputerComponentStatus)
+        </dd>
+        <div></div>
+        <br />
+        <dt class="col-sm-8">
+             DESCRIPTION
+        </dt>
+        <div></div>
+        <br />
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FaultDescription)
+        </dd>
+        <div></div>
+        <br />
+        <dt class="col-sm-8">
+            COMPUTER COMPONENTS
+        </dt>
+        <div></div>
+        <br />
+        @foreach (var u in Model.Computer.Computer_Comps)
+        {
+            <dd class="col-sm-10">
+                * @Html.DisplayFor(model => u.Name)
+            </dd>
+
+        }
+    </dl>
+</div>
+

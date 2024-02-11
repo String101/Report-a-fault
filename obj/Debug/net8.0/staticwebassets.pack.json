@@ -5,16 +5,52 @@
       "PackagePath": "staticwebassets\\Report a Fault.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\css\\admin.css",
+      "PackagePath": "staticwebassets\\css\\admin.css"
+    },
+    {
+      "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\css\\fundanathi.css",
+      "PackagePath": "staticwebassets\\css\\fundanathi.css"
+    },
+    {
+      "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\css\\pexels-andrea-piacquadio-3762800.jpg",
+      "PackagePath": "staticwebassets\\css\\pexels-andrea-piacquadio-3762800.jpg"
+    },
+    {
+      "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\css\\queries.css",
+      "PackagePath": "staticwebassets\\css\\queries.css"
+    },
+    {
+      "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\css\\register.css",
+      "PackagePath": "staticwebassets\\css\\register.css"
+    },
+    {
+      "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\css\\sihle.css",
+      "PackagePath": "staticwebassets\\css\\sihle.css"
+    },
+    {
       "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
     },
     {
       "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\images\\CUT.png",
+      "PackagePath": "staticwebassets\\images\\CUT.png"
+    },
+    {
       "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\images\\accessDenied.jpg",
       "PackagePath": "staticwebassets\\images\\accessDenied.jpg"
+    },
+    {
+      "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\images\\transparent.png",
+      "PackagePath": "staticwebassets\\images\\transparent.png"
     },
     {
       "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\js\\site.js",

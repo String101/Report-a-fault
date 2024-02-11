@@ -19,5 +19,8 @@ namespace Report_a_Fault.Models
         public Campus Campus { get; set; }
 
         public bool Enabled { get; set; } = true;
+        public string? DepartmentId { get; set; }
+        [ValidateNever]
+        public Department Department { get; set; }
     }
 }

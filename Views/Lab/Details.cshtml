@@ -1,0 +1,59 @@
+﻿@model Report_a_Fault.ViewModel.LabNumberOfComputer
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_AdminLayout";
+}
+
+@for (var i = 0; i < 5; i++)
+{
+    <div></div>
+    <br />
+}
+<h1 class="heading-tetiary">REVIEW COMPUTER LABORATORY : @Model.Labs.LabNumber</h1>
+
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-8">
+           CAMPUS NAME
+        </dt>
+        <div></div>
+        <br />
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Labs.Building.Campus.CampusName)
+        </dd>
+        <div></div>
+        <br />
+        <dt class="col-sm-8">
+            BUILDING NAME
+        </dt>
+        <div></div>
+        <br />
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Labs.Building.BuildingName)
+        </dd>
+        <div></div>
+        <br />
+        <dt class = "col-sm-8">
+            LABORATORY NUMBER
+        </dt>
+        <div></div>
+        <br />
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Labs.LabNumber)
+        </dd>
+        <div></div>
+        <br />
+        <dt class="col-sm-8">
+            NUMBER OF COMPUTERS IN @Html.DisplayFor(model=>model.Labs.LabNumber)
+        </dt>
+        <div></div>
+        <br />
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumberOfComputer)
+        </dd>
+    </dl>
+</div>
+

@@ -1,0 +1,40 @@
+﻿@model Report_a_Fault.Models.Building
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "_AdminLayout";
+}
+@for (var i = 0; i < 5; i++)
+{
+    <div></div>
+    <br />
+}
+<h1 class="heading-tetiary">UPDATEING @Model.BuildingName</h1>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Update">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BuildingId" />
+            <input type="hidden" asp-for="CampusId" />
+            <div class="form-group">
+                <strong>
+                    <label class="control-label"> BUILDING NAME</label>
+                </strong>
+                <div></div>
+                <br />
+                <input asp-for="BuildingName"  class="form-control" />
+                <span asp-validation-for="BuildingName" class="text-danger"></span>
+            </div>
+           <div></div>
+           <br />
+            <div class="form-group">
+                <input type="submit" value="UPDATE" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

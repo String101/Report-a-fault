@@ -14,6 +14,15 @@ namespace Report_a_Fault.Models
         [ValidateNever]
         public Computer Computer { get; set; }
 
-        
+        public string StudentEmail { get; set; }
+
+        public string? InternEmail { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        public DateTime DateReported { get; set; }= DateTime.Now;
+
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        public DateTime? DateUpdate { get; set; }
+
+
     }
 }

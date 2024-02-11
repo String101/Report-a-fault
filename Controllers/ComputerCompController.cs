@@ -9,7 +9,7 @@ using Report_a_Fault.ViewModel;
 
 namespace Report_a_Fault.Controllers
 {
-   
+
     public class ComputerCompController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -19,34 +19,22 @@ namespace Report_a_Fault.Controllers
             _unitOfWork = unitOfWork;
             _usermanager = usermanager;
         }
-        public IActionResult Index(string id,string computerNumber)
-        {
-            var username = _usermanager.GetUserName(User);
-
-            var user = _unitOfWork.User.Get(x => x.UserName == username);
-            var computerComp = _unitOfWork.Computer_Comp.GetAll(u=>u.Computer.Lab.CampusId==user.CampusId&&u.Computer.LabId==id &&u.Computer.ComputerNumber==computerNumber,includeProperties: "Computer");
-
-            foreach (var com in computerComp)
-            {
-                com.Computer.Lab = _unitOfWork.Lab.Get(u => u.Id == com.Computer.LabId);
-                com.Computer.Lab.Campus = _unitOfWork.Campus.Get(o => o.CampusId == com.Computer.Lab.CampusId);
-            }
-            return View(computerComp);
-        }
-      
+ 
         [HttpGet]
-        
-        public IActionResult Create()
+        [Authorize(Roles =SD.Role_Intern)]
+
+        public IActionResult Create(string labId, string computerNumber)
         {
             var username = _usermanager.GetUserName(User);
 
             var user = _unitOfWork.User.Get(x => x.UserName == username, includeProperties: "Campus");
             CompVM compVM = new()
             {
-                ComputerList = _unitOfWork.Computer.GetAll(u=>u.Lab.CampusId==user.CampusId,includeProperties:"Lab").OrderBy(u=>u.LabId).Select(u => new SelectListItem
+                ComputerList = _unitOfWork.Computer.GetAll(u => u.LabId == labId && u.ComputerNumber == computerNumber, includeProperties: "Lab").OrderBy(u => u.LabId).Select(u => new SelectListItem
+
                 {
-                    
-                    Text = user.Campus.CampusName +"\\"+u.Lab.LabNumber+"\\"+u.ComputerNumber.ToString(),
+
+                    Text = u.ComputerNumber.ToString(),
                     Value = u.Id.ToString(),
                 })
             };
@@ -54,20 +42,30 @@ namespace Report_a_Fault.Controllers
             return View(compVM);
         }
         [HttpPost]
-       
+        [Authorize(Roles =SD.Role_Intern)]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(CompVM compVM)
         {
             bool computerComponentExists = _unitOfWork.Computer_Comp.Any(u => u.Name == compVM.ComputerComp.Name && u.ComputerId == compVM.ComputerComp.ComputerId);
 
-            if(ModelState.IsValid&& !computerComponentExists)
+            if (ModelState.IsValid && !computerComponentExists)
             {
                 _unitOfWork.Computer_Comp.Add(compVM.ComputerComp);
                 _unitOfWork.Save();
-                return RedirectToAction("Index", "Lab");
+                var computer = _unitOfWork.Computer.Get(u => u.Id == compVM.ComputerComp.ComputerId, includeProperties: "Lab");
+                var labNumber = computer.Lab.Id;
+                return RedirectToAction("Index", "Computer", new { id = labNumber });
+
             }
+            else
+            {
+                var computer = _unitOfWork.Computer.Get(u => u.Id == compVM.ComputerComp.ComputerId, includeProperties: "Lab");
+                var labNumber = computer.Lab.Id;
+                return RedirectToAction("Index", "Computer", new { id = labNumber });
+            }
+           
 
-
-            return RedirectToAction(nameof(Index));
+            
         }
     }
 }

@@ -2,59 +2,66 @@
 
 @{
     ViewData["Title"] = "UpdateComputerStatus";
+    Layout = "_AdminLayout";
 }
-
-<h1>UpdateComputerStatus</h1>
-
-<h4>Computer</h4>
+@for (var i = 0; i < 5; i++)
+{
+    <div></div>
+    <br />
+}
+<h1 class="heading-tetiary"> REVIEW AND UPDATE COMPUTER STATUS</h1>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
         <form asp-action="UpdateComputerStatus">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="Lab" />
             <div class="form-group">
-                <label asp-for="ComputerNumber" class="control-label"></label>
+                <strong>
+                    <label class="control-label"> COMPUTER NUMBER</label>
+                </strong>
+                <div></div>
+                <br />
                 <input asp-for="ComputerNumber" disabled class="form-control" />
                 <span asp-validation-for="ComputerNumber" class="text-danger"></span>
             </div>
+            <div></div>
+            <br />
             <div class="form-group">
-                <label asp-for="LabId" class="control-label"></label>
-                <input asp-for="LabId" disabled class="form-control" />
+                <strong>
+                    <label class="control-label"> LABORATORY NUMBER</label>
+                </strong>
+                <div></div>
+                <br />
+                <input asp-for="Lab.LabNumber" disabled class="form-control" />
                 <span asp-validation-for="LabId" class="text-danger"></span>
             </div>
+            <div></div>
+            <br />
+            
             <div class="form-group">
-                <label asp-for="CreatedDate" class="control-label"></label>
-                <input asp-for="CreatedDate" disabled class="form-control" />
-                <span asp-validation-for="CreatedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UpdatedDate" class="control-label"></label>
-                <input asp-for="UpdatedDate" disabled class="form-control" />
-                <span asp-validation-for="UpdatedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ComputerComponentStatus" class="control-label"></label>
-                <select class="form-select" asp-for="ComputerComponentStatus">
-                  
+                <strong>
+                    <label class="control-label"> CHOOSE STATUS</label>
+                </strong>
+                <div></div>
+                <br />
+                <select asp-for="ComputerComponentStatus" class="form-control">
                     <option value="@SD.StatusHealty">@SD.StatusHealty</option>
-                    <option value="@SD.StatusFaulty">@SD.StatusFaulty</option>
                     <option value="@SD.StatusFixInProgress">@SD.StatusFixInProgress</option>
-                    
+                    <option value="@SD.StatusFaulty">@SD.StatusFaulty</option>
                 </select>
                 <span asp-validation-for="ComputerComponentStatus" class="text-danger"></span>
             </div>
+            <div></div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="UPDATE" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -1,0 +1,427 @@
+.subjects-section {
+  padding: 9.8rem 0 5rem 3rem;
+}
+
+.subjects-section ul {
+  margin-bottom: 4rem;
+}
+
+.subjects {
+  list-style: none;
+  font-size: 2rem;
+  padding-bottom: 1rem;
+  font-weight: 500;
+}
+
+.subject-icon {
+  margin-right: 1rem;
+  color: #e67e22;
+}
+
+.svg {
+  width: 80%;
+  height: 80%;
+  margin-left: 9.8rem;
+}
+
+.section-pricing {
+  padding: 9.6rem 0;
+}
+
+.princing-plan {
+  border-radius: 11px;
+
+  width: 75%;
+}
+
+.princing-plan--starter {
+  border: 2px solid #fdf2e9;
+  padding: 4.6rem;
+}
+
+.princing-plan--complete {
+  padding: 4.8rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.princing-plan--complete::after {
+  content: "Best value";
+  position: absolute;
+  top: 6%;
+  right: -18%;
+
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+  background-color: #ffd43b;
+  padding: 0.8rem 8rem;
+  transform: rotate(45deg);
+}
+
+.plan-header {
+  text-align: center;
+  margin-bottom: 4.8rem;
+}
+
+.plan-name {
+  color: #cf711f;
+  font-weight: 600;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.75;
+  margin-bottom: 3.2rem;
+}
+
+.plan-price {
+  font-size: 6.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.6rem;
+}
+
+.plan-price span {
+  font-size: 3rem;
+  font-weight: 500;
+  margin-right: 0.8rem;
+}
+
+.plan-text {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #6f6f6f;
+}
+
+.plan-sing-up {
+  text-align: center;
+  margin-top: 4.8rem;
+}
+
+.plan-details {
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.feature-icon {
+  color: #e67e22;
+  height: 3.2rem;
+  width: 3.2rem;
+  background-color: #fdf2e9;
+  margin-bottom: 3.2rem;
+  padding: 1.6rem;
+  border-radius: 50%;
+}
+
+.feature-title {
+  font-size: 2.4rem;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 1.6rem;
+}
+
+.feature-text {
+  font-size: 1.8rem;
+  line-height: 1.8;
+}
+
+.svg-box {
+  justify-self: end;
+}
+
+.subject-box {
+  justify-self: center;
+}
+
+
+.card-shadow {
+    
+    width: 70rem;
+}
+
+.cus-table {
+   
+    border-radius: 9px;
+    width: 76.8rem;
+    font-weight: 600;
+}
+
+.profile-form {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 9.8rem 0;
+}
+
+.profile-form .form-items {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.profile-form input {
+    height: 4rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.card-shadow .cus-table thead {
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    padding: 1rem;
+    color: #555;
+}
+
+.card-shadow .cus-table th {
+    padding: 1rem;
+}
+
+.card-shadow .cus-table tbody {
+    background-color: #ebebeb;
+}
+
+.card-shadow .cus-table td {
+    padding: 1rem;
+   
+    font-weight: 500;
+    border-bottom: 1px solid #ccc;
+}
+
+.actions {
+    display: flex;
+    gap: 2rem;
+    background-color: #333;
+    padding: 2rem;
+    border-radius: 9px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.action-icon {
+    font-size: 2rem;
+    color: #fff;
+}
+
+hr {
+    color: #ccc;
+}
+
+.admin-info {
+    margin: 0 auto;
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: #e67e22;
+    padding: 1rem;
+    border-radius: 9px;
+}
+
+.user-icon {
+    margin-right: 1rem;
+}
+
+.section-student-details {
+    display: flex;
+    gap: 10rem;
+    width: 100%;
+}
+
+.section-student-details dt{
+    font-size: 1.5rem;
+    margin-bottom: 1rem; 
+}
+
+.section-student-details dd {
+    font-size: 1.5rem;
+  
+}
+
+.download-btn {
+    padding: 1rem;
+    background-color: #e67e22;
+    text-decoration: none;
+    color: # fff;
+    border-radius: 9px;
+}
+
+.actions  a{
+    color: white;
+    text-decoration: none;
+}
+
+.icon {
+    margin-left: 1rem;
+}
+
+.details-subjects {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.form-items .form-select {
+    height: 40px;
+    border-radius: 9px;
+}
+
+.span {
+    column-span: 2;
+}
+
+
+.update .apply-form {
+    padding: 0; 
+}
+
+.add-new-subject {
+    display: flex;
+    justify-content: end;
+}
+
+.add-new-subject-btn {
+    padding: 1rem;
+    text-decoration: none;
+    color: #fff;
+    background-color: #333;
+    border-radius: 9px;
+    margin-bottom: 1rem;
+
+}
+
+.add-new-subject-btn:hover {
+    color: #e67e22;
+}
+
+.add-new-subject .icon {
+    font-size: 1.5rem;
+}
+
+.inner-btn {
+    display: flex;
+    align-items: center;
+}
+
+.inner-btn p{
+    margin-top: 10px;
+}
+
+.icon-logout {
+    list-style: none;
+    margin-left: 9rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #fff;
+}
+
+.search-bar {
+    padding: 1rem;
+    border-top-left-radius : 9px;
+    border-top-right-radius: 9px;
+    background-color: #333;
+    width: 76.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    width: 300px;
+    border: none;
+    padding: 1rem;
+    border-top-left-radius: 9px;
+    border-bottom-left-radius: 9px;
+     
+}
+
+.btn-search {
+  
+    background-color: #e67e22;
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    font-size: 1.3rem;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+
+.pagination-bar {
+    padding: 1rem;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+    background-color: #333;
+    width: 76.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.pagination-text {
+    color: #fff;
+    margin: 1rem 3rem 0;
+}
+
+.pagination-btn {
+    display: flex;
+    width: 100px;
+    justify-content: space-between;
+    border-radius: 9px;
+    padding: 1rem;
+}
+
+
+
+.form-label-check {
+    font-size: 1.4rem;
+    margin-top: 7px; 
+}
+
+.check-items {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem; 
+}
+
+.custom-height {
+    height: 10px;
+    margin-left: 10px; 
+}
+
+.cus-form-btn {
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 2rem 9.8rem;
+    border: none;
+    background-color: #e67e22;
+    border-radius: 9px;
+}
+
+.p-icon {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.standard-bank-logo {
+    width: 10%;
+    height: 10%;
+}
+
+.standard-bank {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.acc-p {
+    font-size: 1.5rem;
+}
+
+
+.carousel-item {
+    height: 32rem;
+    
+}
+.description {
+    font-family: Arial, sans-serif; /* Change the font family */
+    font-size: 16px; /* Change the font size */
+   
+}
+
+
+
+

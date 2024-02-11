@@ -9,11 +9,11 @@ namespace Report_a_Fault.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Display(Name = "Lab Number")]
         public string Id { get; set; }
-        public int LabNumber { get; set; }
+        public string LabNumber { get; set; }
         [ForeignKey("Campus")]
-        public string CampusId { get; set; }
-
-        public Campus Campus { get; set; }
+        public string BuildingId { get; set; }
+        [ValidateNever]
+        public Building Building { get; set; }
         
 
     }

@@ -2,47 +2,80 @@
 
 @{
     ViewData["Title"] = "GetAllFault";
+    Layout = "_AdminLayout";
 }
-
-<h1>GetAllFault</h1>
-
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FaultDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Computer.ComputerNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Computer.Lab.LabNumber)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FaultDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Computer.ComputerNumber)
-            </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Computer.Lab.LabNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Computer.Lab.Campus.CampusName)
-                </td>
-            <td>
-                    <a asp-action="UpdateComputerStatus" asp-route-id="@item.computerId">fault Status Update</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+@for (var i = 0; i < 5; i++)
+{
+    <div></div>
+    <br />
 }
-    </tbody>
-</table>
+<div class="card-shadow">
+    <h1 class="heading-tetiary">Reported Computer Faults</h1>
+    <table class="cus-table">
+        <thead>
+            <tr>
+                <th>
+                    BUILDING
+                </th>
+                <th>
+                    LAB
+                </th>
+                <th>
+                    COMPUTER NUMBER
+                </th>
+                @if (User.IsInRole(SD.Role_Super_Admin) || User.IsInRole(SD.Role_Admin))
+                {
+                    <th>
+                        REPORTED BY
+                    </th>
+                    <th>
+                        ATTENDED BY
+                    </th>
+                }
+               
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Computer.Lab.Building.BuildingName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Computer.Lab.LabNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Computer.ComputerNumber)
+                    </td>
+                    @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Super_Admin))
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentEmail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InternEmail)
+                        </td>
+                    }
+                   
+                   
+                    <td>
+                        <div class="actions">
+                            @if (User.IsInRole(SD.Role_Intern))
+                            {
+                                <a asp-action="UpdateComputerStatus" asp-controller="Fault" asp-route-id="@item.computerId">Edit</a>
+                            }
+
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                            
+                        </div>
+                        
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

@@ -1,72 +1,86 @@
-﻿@model IEnumerable<Report_a_Fault.Models.Computer>
+﻿@model Report_a_Fault.ViewModel.ComputerBuildingVM
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "_AdminLayout";
 }
-
-<h1>Computers Per Lab</h1>
-@if(User.IsInRole(SD.Role_Intern))
+@for (var i = 0; i < 5; i++)
 {
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
+    <div></div>
+    <br />
 }
 
+<div class="card-shadow">
+    <h1 class="heading-tetiary">Laboratory Computers</h1>
+    @if(User.IsInRole(SD.Role_Intern))
+    {
+        <div class="add-new-subject">
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Lab.Campus.CampusName)
-            </th>
-         
-            <th>
-                @Html.DisplayNameFor(model => model.Lab.LabNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ComputerNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ComputerComponentStatus)
-            </th>
-          
-            <th>
-               Components
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Lab.Campus.CampusName)
-                </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lab.LabNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ComputerNumber)
-             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ComputerComponentStatus)
-            </td>
-          
-            <td>
+            <a asp-controller="Computer" asp-action="Create" asp-route-id="@Model.BuildingId" class="add-new-subject-btn">
+                <div class="inner-btn">
+                    <ion-icon class="icon" name="add-outline"></ion-icon>
+                    <p>Add New Computer</p>
+                </div>
+            </a>
 
-                    <a asp-action="Index" asp-controller="ComputerComp" asp-route-id="@item.LabId" asp-route-computerNumber="@item.ComputerNumber">Computer Emenities</a>
-            </td>
-            <td>
-                    @if (User.IsInRole(SD.Role_Student_Assistant))
-                    {
-                        <a asp-action="ReportFault" asp-controller="Fault" asp-route-id="@item.Id">Fault Report</a>
-                    }
-                  
-                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-         
-               
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        </div>
+    }
+   
+    <table class="cus-table">
+        <thead>
+            <tr>
+                <th>
+                    LAB
+                </th>
+                <th>
+                    COMPUTER NUMBER
+                </th>
+                <th>
+                    STATUS
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Computers)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lab.LabNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ComputerNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ComputerComponentStatus)
+                    </td>
+                    <td>
+                        <div class="actions">
+                            @if (User.IsInRole(SD.Role_Student_Assistant))
+                            {
+                                <a asp-action="ReportFault" asp-controller="Fault" asp-route-id="@item.Id">Report</a>
+                            }
+                           
+                            @if (User.IsInRole(SD.Role_Intern))
+                            {
+                                <hr />
+                                <a asp-action="Create" asp-controller="ComputerComp" asp-route-labId="@item.Lab.Id" asp-route-computerNumber="@item.ComputerNumber">Add Part</a>
+                            }
+                     
+                            <hr />
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            <hr />
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            <hr />
+                        </div>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

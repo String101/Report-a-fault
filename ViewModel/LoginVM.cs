@@ -9,7 +9,7 @@ namespace Report_a_Fault.ViewModel
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public bool RememberMe { get; set; }
+    
         public string? RedirectUrl { get; set; }
     }
 }

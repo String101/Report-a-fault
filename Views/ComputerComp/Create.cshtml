@@ -1,38 +1,48 @@
-﻿@model CompVM
+﻿@model Report_a_Fault.ViewModel.CompVM
 
 @{
-    ViewData["Title"] = "create";
+    ViewData["Title"] = "Create";
+    Layout = "_AdminLayout";
 }
+@for (var i = 0; i < 5; i++)
+{
+    <div></div>
+    <br />
+}
+<h1 class="heading-tetiary">ADD NEW COMPUTER COMPONET </h1>
 
-<h1>create</h1>
-
-<h4>Labs</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="create">
-          
+    <div class="col-md-8">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="@Model.ComputerComp.Name" class="control-label"></label>
-                <input asp-for="@Model.ComputerComp.Name class=" form-control" />
-                <span asp-validation-for="@Model.ComputerComp.Name" class="text-danger"></span>
+                <strong>
+                    <label class="control-label"> NAME</label>
+                </strong>
+                <div></div>
+                <br />
+                <input asp-for="ComputerComp.Name" class="form-control" />
+                <span asp-validation-for="ComputerComp.Name" class="text-danger"></span>
             </div>
+            <div></div>
+            <br />
             <div class="form-group">
-                <label asp-for="@Model.ComputerComp.ComputerId" class="control-label"></label>
-                <select asp-for="@Model.ComputerComp.ComputerId" asp-items="@Model.ComputerList" class="form-select border shadow">
-                    <option disabled selected>--Select computor--</option>
-                </select>
-
-
+                <strong>
+                    <label class="control-label"> COMPUTER IDENTITY NUMBER</label>
+                </strong>
+                <div></div>
+                <br />
+                <select asp-for="ComputerComp.ComputerId" class="form-control" asp-items="Model.ComputerList"></select>
             </div>
+            <div></div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="ADD" class="btn btn-dark" />
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -22,6 +22,10 @@ namespace Report_a_Fault.Repositories
 
         public ICampus Campus { get; private set; }
 
+        public IDepartment Department { get; private set; }
+
+        public IBuilding Building { get; private set; }
+
         public UnitOfWork(SqlDbContext db)
         {
             _db = db;
@@ -31,7 +35,8 @@ namespace Report_a_Fault.Repositories
             Fault = new FaultRepo(_db);
             User = new ApplicationUserRepo(_db);
             Campus = new CampusRepo(_db);
-           
+           Department = new DepartmentRepo(_db);
+            Building = new BuildingRepo(_db);
         }
         public void Save()
         {

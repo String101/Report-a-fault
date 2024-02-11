@@ -9,7 +9,7 @@ using Report_a_Fault.ViewModel;
 
 namespace Report_a_Fault.Controllers
 {
-    
+
     public class ComputerController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -20,21 +20,25 @@ namespace Report_a_Fault.Controllers
             _unitOfWork = unitOfWork;
             _usermanager = usermanager;
         }
-        public IActionResult Index(int id)
+        [Authorize(Roles = $"{SD.Role_Admin},{SD.Role_Super_Admin},{SD.Role_Intern},{SD.Role_Student_Assistant}")]
+        public IActionResult Index(string id)
         {
-            var username = _usermanager.GetUserName(User);
-
-            var user = _unitOfWork.User.Get(x => x.UserName == username);
-            var computers = _unitOfWork.Computer.GetAll(u=>u.Lab.CampusId==user.CampusId&&u.Lab.LabNumber==id,includeProperties: "Lab,Computer_Comps").OrderBy(u=>u.CreatedDate);
+            var computers = _unitOfWork.Computer.GetAll(u =>u.Lab.Id == id, includeProperties: "Lab,Computer_Comps").OrderBy(u => u.CreatedDate);
             foreach (var computer in computers)
             {
-                computer.Lab.Campus = _unitOfWork.Campus.Get(u => u.CampusId == user.CampusId);
+                computer.Lab = _unitOfWork.Lab.Get(u => u.Id == computer.LabId);
             }
-            return View(computers);
+
+            ComputerBuildingVM computerBuildingVM = new()
+            {
+               Computers = computers,
+               BuildingId = id,
+            };
+            return View(computerBuildingVM);
         }
         [HttpGet]
-        [Authorize(Roles = $"{SD.Role_Super_Admin},{SD.Role_Intern}")]
-        public IActionResult Create()
+        [Authorize(Roles = SD.Role_Intern)]
+        public IActionResult Create(string id)
         {
 
             var username = _usermanager.GetUserName(User);
@@ -42,53 +46,61 @@ namespace Report_a_Fault.Controllers
             var user = _unitOfWork.User.Get(x => x.UserName == username);
             ComputerVM computerVM = new()
             {
-                LabList = _unitOfWork.Lab.GetAll(u=>u.CampusId==user.CampusId).Select(u=> new SelectListItem
+                BuildingList = _unitOfWork.Lab.GetAll(u => u.Id == id).OrderBy(u => u.LabNumber).Select(u => new SelectListItem
                 {
-                   Text=u.LabNumber.ToString(),
-                   Value=u.Id,
+                    Text = u.LabNumber.ToString(),
+                    Value = u.Id,
                 })
             };
 
             return View(computerVM);
         }
-     
+
         [HttpPost]
-        [Authorize(Roles = $"{SD.Role_Super_Admin},{SD.Role_Intern}")]
+        [Authorize(Roles = SD.Role_Intern)]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(ComputerVM computerVM)
         {
-            computerVM.Computer.Id= Guid.NewGuid().ToString();
-            bool computerNumberExists = _unitOfWork.Computer.Any(u => u.ComputerNumber == computerVM.Computer.ComputerNumber && u.LabId==computerVM.Computer.LabId);
+            computerVM.Computer.Id = Guid.NewGuid().ToString();
+            bool computerNumberExists = _unitOfWork.Computer.Any(u => u.ComputerNumber == computerVM.Computer.ComputerNumber && u.LabId == computerVM.Computer.LabId);
             ModelState.Remove("Id");
-            if(ModelState.IsValid && !computerNumberExists)
+            if (ModelState.IsValid && !computerNumberExists)
             {
                 _unitOfWork.Computer.Add(computerVM.Computer);
                 _unitOfWork.Save();
             }
 
             var lab = _unitOfWork.Lab.Get(u => u.Id == computerVM.Computer.LabId);
-            int labId = lab.LabNumber;
+            string labId = lab.Id;
             return RedirectToAction("Index", new { id = labId });
         }
         [HttpGet]
-
+        [Authorize(Roles = $"{SD.Role_Admin},{SD.Role_Super_Admin},{SD.Role_Intern},{SD.Role_Student_Assistant}")]
         public IActionResult Details(string id)
         {
             var computer = _unitOfWork.Computer.Get(u => u.Id == id, includeProperties: "Lab,Computer_Comps");
+            computer.Lab.Building = _unitOfWork.Building.Get(u => u.BuildingId == computer.Lab.BuildingId);
             return View(computer);
         }
         [HttpGet]
+        [Authorize(Roles =SD.Role_Intern)]
         public IActionResult Delete(string id)
         {
-            var computer = _unitOfWork.Computer.Get(u => u.Id == id, includeProperties: "Lab");
+            var computer = _unitOfWork.Computer.Get(u => u.Id == id, includeProperties: "Lab,Computer_Comps");
+            computer.Lab.Building=_unitOfWork.Building.Get(u=>u.BuildingId == computer.Lab.BuildingId);
+            computer.Lab.Building.Campus = _unitOfWork.Campus.Get(u => u.CampusId == computer.Lab.Building.CampusId);
             return View(computer);
         }
         [HttpPost]
+        [Authorize(Roles = SD.Role_Intern)]
+        [ValidateAntiForgeryToken]
         public IActionResult Delete(Computer computer)
         {
-            var computerFromDb = _unitOfWork.Computer.Get(u => u.Id == computer.Id, includeProperties: "Lab");
+            var computerFromDb = _unitOfWork.Computer.Get(u => u.Id == computer.Id, includeProperties: "Lab,Computer_Comps");
             _unitOfWork.Computer.Remove(computerFromDb);
             _unitOfWork.Save();
-            return RedirectToAction(nameof(Index));
+            var labId = computerFromDb.LabId;
+            return RedirectToAction("Index", new { id = labId });
         }
 
     }

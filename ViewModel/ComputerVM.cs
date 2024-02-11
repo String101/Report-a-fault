@@ -9,6 +9,6 @@ namespace Report_a_Fault.ViewModel
         public Computer Computer { get; set; }
 
         [ValidateNever]
-        public IEnumerable<SelectListItem> LabList { get; set; }
+        public IEnumerable<SelectListItem> BuildingList { get; set; }
     }
 }

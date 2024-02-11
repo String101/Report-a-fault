@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Report_a_Fault.Models.Building>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_AdminLayout";
+}
+
+@for (var i = 0; i < 5; i++)
+{
+    <div></div>
+    <br />
+}
+<div class="card-shadow" >
+    <h1 class="heading-tetiary">Campus Buildings</h1>
+    @if (User.IsInRole(SD.Role_Intern))
+    {
+        <div class="add-new-subject">
+
+            <a asp-controller="Building" asp-action="Create" class="add-new-subject-btn">
+                <div class="inner-btn">
+                    <ion-icon class="icon" name="add-outline"></ion-icon>
+                    <p>Add New Building</p>
+                </div>
+            </a>
+
+        </div>
+    }
+
+    <table class="cus-table">
+        <thead>
+            <tr>
+                <th>
+                    CAMPUS
+                </th>
+                <th>
+                    BUILDING NAME
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Campus.CampusName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BuildingName)
+                    </td>
+
+                    <td>
+                        <div class="actions">
+                            <a asp-action="Index" asp-controller="Lab" asp-route-buildingId="@item.BuildingId">Laboratories</a>
+                            <hr />
+                            <a asp-action="Details" asp-route-id="@item.BuildingId">Details</a>
+                            <hr />
+                            <a asp-action="Update" asp-route-id="@item.BuildingId">Update</a>
+                            <hr />
+                        </div>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+

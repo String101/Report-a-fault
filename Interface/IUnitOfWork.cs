@@ -8,6 +8,8 @@
         IFault Fault { get;}
         IApplicationUser User { get;}
         ICampus Campus { get;}
+        IDepartment Department { get;}
+        IBuilding Building { get;}
     
         void Save();
     }
