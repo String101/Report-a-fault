@@ -26,6 +26,8 @@ namespace Report_a_Fault.Repositories
 
         public IBuilding Building { get; private set; }
 
+        public IAssign Assign { get; private set; }
+
         public UnitOfWork(SqlDbContext db)
         {
             _db = db;
@@ -37,6 +39,7 @@ namespace Report_a_Fault.Repositories
             Campus = new CampusRepo(_db);
            Department = new DepartmentRepo(_db);
             Building = new BuildingRepo(_db);
+            Assign = new AssignRepo(_db);
         }
         public void Save()
         {

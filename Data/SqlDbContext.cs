@@ -56,6 +56,7 @@ namespace Report_a_Fault.Data
                 );
         }
         public DbSet<Report_a_Fault.Models.Building> Building { get; set; } = default!;
+        public DbSet<Report_a_Fault.Models.AssignJob> AssignJob { get; set; } = default!;
 
 
     }

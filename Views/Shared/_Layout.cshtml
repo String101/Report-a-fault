@@ -1,10 +1,18 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
-
+@{
+    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+    var showBanner = !consentFeature?.CanTrack ?? false;
+    var cookieString = consentFeature?.CreateConsentCookie();
+}
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 <head>
+    <meta name="description" content="Central University of Technology, Fault Reporting System">
+    <meta name="keywords" content="cut fault reports,fault reporting">
+    <meta name="author" content="S Sithole , VV Zumani">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Report_a_Fault</title>

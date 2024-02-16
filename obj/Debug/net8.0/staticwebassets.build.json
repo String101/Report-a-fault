@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Zv2ajjPXjnXvVLHr+35pKOvE4Q3VlBxpkpkhwhysatg=",
+  "Hash": "h4fGTMmWhI+zchJDmLqHvYWUBgvkJKcPWncmsjSIfTM=",
   "Source": "Report a Fault",
   "BasePath": "_content/Report a Fault",
   "Mode": "Default",
@@ -264,6 +264,25 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\images\\13566304-3aba-4fd1-823b-0b7edbdeee44.png",
+      "SourceId": "Report a Fault",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\",
+      "BasePath": "_content/Report a Fault",
+      "RelativePath": "images/13566304-3aba-4fd1-823b-0b7edbdeee44.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\13566304-3aba-4fd1-823b-0b7edbdeee44.png"
+    },
+    {
       "Identity": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\images\\accessDenied.jpg",
       "SourceId": "Report a Fault",
       "SourceType": "Discovered",
@@ -300,6 +319,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\CUT.png"
+    },
+    {
+      "Identity": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\images\\cutt.png",
+      "SourceId": "Report a Fault",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\",
+      "BasePath": "_content/Report a Fault",
+      "RelativePath": "images/cutt.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\cutt.png"
     },
     {
       "Identity": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\images\\transparent.png",

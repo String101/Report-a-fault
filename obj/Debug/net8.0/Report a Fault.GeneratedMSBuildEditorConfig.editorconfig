@@ -102,12 +102,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHV0ZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/thusi/Downloads/Report a Fault/Views/Fault/AssignJobToIntern.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmF1bHRcQXNzaWduSm9iVG9JbnRlcm4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/thusi/Downloads/Report a Fault/Views/Fault/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmF1bHRcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/thusi/Downloads/Report a Fault/Views/Fault/GetAllFault.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmF1bHRcR2V0QWxsRmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thusi/Downloads/Report a Fault/Views/Fault/Jobs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmF1bHRcSm9icy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/thusi/Downloads/Report a Fault/Views/Fault/ReportFault.cshtml]

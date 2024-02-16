@@ -41,12 +41,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\images\\13566304-3aba-4fd1-823b-0b7edbdeee44.png",
+      "PackagePath": "staticwebassets\\images\\13566304-3aba-4fd1-823b-0b7edbdeee44.png"
+    },
+    {
       "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\images\\CUT.png",
       "PackagePath": "staticwebassets\\images\\CUT.png"
     },
     {
       "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\images\\accessDenied.jpg",
       "PackagePath": "staticwebassets\\images\\accessDenied.jpg"
+    },
+    {
+      "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\images\\cutt.png",
+      "PackagePath": "staticwebassets\\images\\cutt.png"
     },
     {
       "Id": "C:\\Users\\thusi\\Downloads\\Report a Fault\\wwwroot\\images\\transparent.png",

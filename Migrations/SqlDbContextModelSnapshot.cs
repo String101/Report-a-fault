@@ -247,6 +247,27 @@ namespace Report_a_Fault.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Report_a_Fault.Models.AssignJob", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FaultId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("InternId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FaultId");
+
+                    b.HasIndex("InternId");
+
+                    b.ToTable("AssignJob");
+                });
+
             modelBuilder.Entity("Report_a_Fault.Models.Building", b =>
                 {
                     b.Property<string>("BuildingId")
@@ -356,32 +377,32 @@ namespace Report_a_Fault.Migrations
                     b.HasData(
                         new
                         {
-                            DepartmentId = "9fab261d-7dcb-4433-bf37-4f656cdc5e74",
+                            DepartmentId = "c24a3cc3-8084-4478-93ba-0dd567ba32ff",
                             DepartmentName = "Department of Built Environment"
                         },
                         new
                         {
-                            DepartmentId = "8dceff2c-c4d4-479d-97ac-8527090367e3",
+                            DepartmentId = "781ef49f-71ac-4f2a-8488-d4858c722c85",
                             DepartmentName = "Department of Civil Engineering"
                         },
                         new
                         {
-                            DepartmentId = "492a235a-3b4e-43b8-98a9-423a90e75171",
+                            DepartmentId = "c83e721e-dd9b-4d1b-b6d2-5252e2771280",
                             DepartmentName = "Department of Electrical, Electronic and Computer Engineering"
                         },
                         new
                         {
-                            DepartmentId = "3564ca44-83df-4ef0-b14a-dbacef6282ee",
+                            DepartmentId = "391c67d4-a781-4ce7-81bf-fff92bbe654a",
                             DepartmentName = "Department of Mechanical and Mechatronic Engineering"
                         },
                         new
                         {
-                            DepartmentId = "68a783d6-b7a4-4c03-81f1-32c2f889aef4",
+                            DepartmentId = "ed7d5692-8bbc-4179-a022-12a8e27ebfb3",
                             DepartmentName = "Department of Mathematical and Physical Sciences"
                         },
                         new
                         {
-                            DepartmentId = "40165878-eb66-46ef-97a7-4b30cbe78f2a",
+                            DepartmentId = "c0668fd6-4f12-4089-9353-14b19b53ab1a",
                             DepartmentName = "Department of Information Technology"
                         });
                 });
@@ -505,6 +526,23 @@ namespace Report_a_Fault.Migrations
                     b.Navigation("Campus");
 
                     b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("Report_a_Fault.Models.AssignJob", b =>
+                {
+                    b.HasOne("Report_a_Fault.Models.Fault", "Fault")
+                        .WithMany()
+                        .HasForeignKey("FaultId");
+
+                    b.HasOne("Report_a_Fault.Models.ApplicationUser", "Intern")
+                        .WithMany()
+                        .HasForeignKey("InternId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Fault");
+
+                    b.Navigation("Intern");
                 });
 
             modelBuilder.Entity("Report_a_Fault.Models.Building", b =>

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Report a Fault")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+731f65ccf6e3f01ccca655989b5add2b32634cc1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1d1e5c5139ad3e6d841f75ce9eb3288e190c91c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Report a Fault")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Report a Fault")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

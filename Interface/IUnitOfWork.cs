@@ -10,6 +10,7 @@
         ICampus Campus { get;}
         IDepartment Department { get;}
         IBuilding Building { get;}
+        IAssign  Assign { get;}
     
         void Save();
     }

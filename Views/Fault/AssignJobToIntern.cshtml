@@ -1,0 +1,37 @@
+﻿@model Report_a_Fault.ViewModel.AssignVM
+
+@{
+    ViewData["Title"] = "AssignJobToIntern";
+    Layout = "_AdminLayout";
+}
+
+<h1 class="heading-tetiary">ASSIGN A JOB</h1>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="AssignJobToIntern">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+         <input asp-for="@Model.FaultAssign.Id" hidden />
+            <input asp-for="@Model.FaultAssign.FaultId" hidden />
+            <div class="form-group">
+                <strong>
+                    <label class="control-label"> CHOOSE INTERN</label>
+                </strong>
+                <div></div>
+                <br />
+                <select asp-for="@Model.FaultAssign.InternId" class="form-control" asp-items="@Model.EmployeeList"></select>
+            </div>
+            <div></div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="SUBMIT" class="btn btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

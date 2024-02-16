@@ -23,7 +23,13 @@ body {
     line-height: 1;
     font-weight: 400;
     color: #555;
-    background-color: azure
+/*    background-image: url('../images/transparent.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 50%;
+    background-position: center;
+    position: relative;*/
+   /* background-color: #B4D4FF;*/
 }
 
 /* ******************************** */

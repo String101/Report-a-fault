@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Report_a_Fault.Models.AssignJob>
+
+@{
+    ViewData["Title"] = "Jobs";
+    Layout = "_AdminLayout";
+}
+@for (var i = 0; i < 5; i++)
+{
+    <div></div>
+    <br />
+}
+<div class="card-shadow">
+    <h1 class="heading-tetiary">Current Job Assigments</h1>
+    <table class="cus-table">
+        <thead>
+            <tr>
+                <th>
+                   BUILDING
+                </th>
+                <th>
+                    LABORATORY NUMBER
+                </th>
+                <th>
+                    COMPUTER NUMBER
+                </th>
+                <th>
+                    STATUS
+                </th>
+                <th>
+                    INTERN NAME
+                </th>
+                <th>
+                    INTERN SURNAME
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fault.Computer.Lab.Building.BuildingName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fault.Computer.Lab.LabNumber)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fault.Computer.ComputerNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fault.Computer.ComputerComponentStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Intern.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Intern.Usersurname)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

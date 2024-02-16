@@ -4,6 +4,7 @@
     ViewData["Title"] = "Login";
     Layout = "_Layout";
 }
+<link rel="stylesheet" href="~/css/sihle.css">
 @for (var i = 0; i < 7; i++)
 {
     <div></div>
@@ -34,11 +35,14 @@
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
 
-                        <div>
-                            <button class="btn btn-form" asp-action="Login" asp-controller="Account" type="submit">Log in</button>
-                            <br />
-                            <a asp-action="ForgotPassword" asp-controller="Account">Forgot your password?</a>
-                            
+                        <div class="dropdown">
+                         Sign in with your credentials
+                           
+                            <div class="dropdown-content">
+                              
+                                <button class="btn btn-outline-primary" asp-action="Login" asp-controller="Account" type="submit">Log in</button>
+                                <a asp-controller="Account" onclick="show()" asp-action="ForgotPassword">Change Password</a>
+                            </div>
                         </div>
                     </form>
                 </div>

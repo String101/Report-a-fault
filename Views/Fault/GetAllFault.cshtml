@@ -33,7 +33,7 @@
                     </th>
                 }
                
-
+               
                 <th></th>
             </tr>
         </thead>
@@ -68,8 +68,13 @@
                                 <a asp-action="UpdateComputerStatus" asp-controller="Fault" asp-route-id="@item.computerId">Edit</a>
                             }
 
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Super_Admin))
+                            {
+                                <a asp-action="AssignJobToIntern" asp-route-id="@item.Id">Assign Intern</a>
+                            }
                             
+
                         </div>
                         
                     </td>

@@ -40,6 +40,7 @@ namespace Report_a_Fault.Controllers
             return RedirectToAction("Index","Home");
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginVM loginVM)
         {
             loginVM.RedirectUrl??= Url.Content("~/");
@@ -109,6 +110,7 @@ namespace Report_a_Fault.Controllers
         }
         [HttpPost]
         [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ForgotPassword(ForgetPasswordVM model)
         {
             if (ModelState.IsValid)
@@ -157,6 +159,7 @@ namespace Report_a_Fault.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword(ResetPasswordVM model)
         {
             if (ModelState.IsValid)

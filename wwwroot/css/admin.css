@@ -1,8 +1,9 @@
 
 .dashboard {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 50rem 1fr;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 50rem 1fr;
+   
 }
 
 .admin-nav {
@@ -12,12 +13,11 @@
     position: fixed;
     flex-direction: column;
     color: #fff;
-    background-color: #333;
+    background-color: #40A2D8;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 .main-admin-nav-list {
-  
     border-radius: 9px;
     margin: 4rem 3rem;
     justify-content: center;
@@ -27,19 +27,23 @@
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
+  
+}
+.scrollable-list {
+    max-height: 1000px; /* Adjust the height as needed */
+    overflow-y: auto;
 }
 
 .main-admin-nav-link {
-    
     display: flex;
     align-items: center;
     list-style: none;
     padding: 1rem;
-  
+   
 }
 
     .main-admin-nav-link:hover {
-        background-color: #474747;
+        background-color: #40A2D8;
         border-radius: 9px;
     }
 
@@ -51,11 +55,11 @@
 
 
 .admin-icon {
-  margin-right: 1rem;
-  background-color: #e67e22;
-  padding: 0.7rem;
-  border-radius: 50%;
-  color: #fff;
+    margin-right: 1rem;
+    background-color: #40A2D8;
+    padding: 0.7rem;
+    border-radius: 50%;
+    color: #fff;
 }
 
 .main-content {

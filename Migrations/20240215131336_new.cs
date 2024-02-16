@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Report_a_Fault.Migrations
 {
     /// <inheritdoc />
-    public partial class newCUT : Migration
+    public partial class @new : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -304,17 +304,41 @@ namespace Report_a_Fault.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "AssignJob",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    InternId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FaultId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AssignJob", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AssignJob_AspNetUsers_InternId",
+                        column: x => x.InternId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AssignJob_Fault_FaultId",
+                        column: x => x.FaultId,
+                        principalTable: "Fault",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.InsertData(
                 table: "Department",
                 columns: new[] { "DepartmentId", "DepartmentName" },
                 values: new object[,]
                 {
-                    { "3564ca44-83df-4ef0-b14a-dbacef6282ee", "Department of Mechanical and Mechatronic Engineering" },
-                    { "40165878-eb66-46ef-97a7-4b30cbe78f2a", "Department of Information Technology" },
-                    { "492a235a-3b4e-43b8-98a9-423a90e75171", "Department of Electrical, Electronic and Computer Engineering" },
-                    { "68a783d6-b7a4-4c03-81f1-32c2f889aef4", "Department of Mathematical and Physical Sciences" },
-                    { "8dceff2c-c4d4-479d-97ac-8527090367e3", "Department of Civil Engineering" },
-                    { "9fab261d-7dcb-4433-bf37-4f656cdc5e74", "Department of Built Environment" }
+                    { "391c67d4-a781-4ce7-81bf-fff92bbe654a", "Department of Mechanical and Mechatronic Engineering" },
+                    { "781ef49f-71ac-4f2a-8488-d4858c722c85", "Department of Civil Engineering" },
+                    { "c0668fd6-4f12-4089-9353-14b19b53ab1a", "Department of Information Technology" },
+                    { "c24a3cc3-8084-4478-93ba-0dd567ba32ff", "Department of Built Environment" },
+                    { "c83e721e-dd9b-4d1b-b6d2-5252e2771280", "Department of Electrical, Electronic and Computer Engineering" },
+                    { "ed7d5692-8bbc-4179-a022-12a8e27ebfb3", "Department of Mathematical and Physical Sciences" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -367,6 +391,16 @@ namespace Report_a_Fault.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AssignJob_FaultId",
+                table: "AssignJob",
+                column: "FaultId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AssignJob_InternId",
+                table: "AssignJob",
+                column: "InternId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Building_CampusId",
                 table: "Building",
                 column: "CampusId");
@@ -411,10 +445,10 @@ namespace Report_a_Fault.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Computer_comp");
+                name: "AssignJob");
 
             migrationBuilder.DropTable(
-                name: "Fault");
+                name: "Computer_comp");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -423,10 +457,13 @@ namespace Report_a_Fault.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Computer");
+                name: "Fault");
 
             migrationBuilder.DropTable(
                 name: "Department");
+
+            migrationBuilder.DropTable(
+                name: "Computer");
 
             migrationBuilder.DropTable(
                 name: "Labs");

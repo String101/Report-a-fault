@@ -6,7 +6,18 @@
 
 @{
     Layout = null;
-    var a = _unitOfWork.Fault.GetAll();
+
+    var p = _unitOfWork.Assign.GetAll(u => u.Intern.UserName == @UserManager.GetUserName(User),includeProperties:"Intern");
+    var username = UserManager.GetUserName(User);
+    var user = _unitOfWork.User.Get(x => x.UserName == username);
+    var a = _unitOfWork.Fault.GetAll(includeProperties: "Computer");
+    foreach(var i in a)
+    {
+        i.Computer.Lab = _unitOfWork.Lab.Get(u => u.Id == i.Computer.LabId);
+        i.Computer.Lab.Building = _unitOfWork.Building.Get(u => u.BuildingId == i.Computer.Lab.BuildingId);
+        i.Computer.Lab.Building.Campus = _unitOfWork.Campus.Get(u => u.CampusId == i.Computer.Lab.Building.CampusId);
+    }
+    var t = a.Where(u => u.Computer.Lab.Building.CampusId == user.CampusId);
 }
 
 <!DOCTYPE html>
@@ -37,45 +48,66 @@
 <body>
     <div class="dashboard">
         <nav class="admin-nav">
-            <img src="~/images/transparent.png" height="200px" />
-           
-            <ul class="main-admin-nav-list">
-                <li class="main-admin-nav-link">
-                    <ion-icon class="admin-icon" name="laptop-outline"></ion-icon>
-                    <a asp-action="Index" onclick="show()" asp-controller="Building">Computer Management</a>
-                </li>
-                <hr />
-                @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Super_Admin) || User.IsInRole(SD.Role_Intern) || User.IsInRole(SD.Role_Student_Assistant))
-                {
+            <img src="~/images/13566304-3aba-4fd1-823b-0b7edbdeee44.png" height="200px" width="300px" />
+            <div class="scrollable-list">
+                <ul class="main-admin-nav-list">
                     <li class="main-admin-nav-link">
                         <ion-icon class="admin-icon" name="laptop-outline"></ion-icon>
-                        <a asp-controller="Fault" onclick="show()" asp-action="GetAllFault">Reported Fault</a>
-                        <div class="ann-count">@a.Count()</div>
+                        <a asp-action="Index" onclick="show()" asp-controller="Building">Computer Management</a>
                     </li>
                     <hr />
-                }
+                    @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Super_Admin) || User.IsInRole(SD.Role_Intern) || User.IsInRole(SD.Role_Student_Assistant))
+                    {
+                        <li class="main-admin-nav-link">
+                            <ion-icon class="admin-icon" name="document-outline"></ion-icon>
+                            <a asp-controller="Fault" onclick="show()" asp-action="GetAllFault">Reported Fault</a>
+                            <div class="ann-count">@t.Count()</div>
+                        </li>
+                        <hr />
+                    }
+                  
+                    @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Super_Admin))
+                    {
+                        <li class="main-admin-nav-link">
+                            <ion-icon class="admin-icon" name="server-outline"></ion-icon>
+                            <a asp-controller="Fault" onclick="show()" asp-action="Jobs">Jobs Assignment</a>
 
-                @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Super_Admin))
-                {
+                        </li>
+                        <hr />
+                        <li class="main-admin-nav-link">
+                            <ion-icon class="admin-icon" name="person-add-outline"></ion-icon>
+                            <a asp-controller="Account" onclick="show()" asp-action="AddUser">Add Employee</a>
+                        </li>
+                        <hr />
+                        <li class="main-admin-nav-link">
+                            <ion-icon class="admin-icon" name="people-outline"></ion-icon>
+                            <a asp-controller="Account" onclick="show()" asp-action="GetAllEmployees">Employees</a>
+                        </li>
+                        <hr />
+                    }
                     <li class="main-admin-nav-link">
-                        <ion-icon class="admin-icon" name="people-outline"></ion-icon>
-                        <a asp-controller="Account" onclick="show()" asp-action="AddUser">Add Employee</a>
+                        <ion-icon class="admin-icon" name="key-outline"></ion-icon>
+                        <a asp-controller="Account" onclick="show()" asp-action="ForgotPassword">Change Password</a>
                     </li>
                     <hr />
+                    @if (User.IsInRole(SD.Role_Intern))
+                    {
+                        <li class="main-admin-nav-link">
+                            <ion-icon class="admin-icon" name="server-outline"></ion-icon>
+                            <a asp-controller="Fault" onclick="show()" asp-action="Jobs">Jobs Assignment</a>
+                            <div class="ann-count">@p.Count()</div>
+                        </li>
+                        <hr />
+                    }
+
+
                     <li class="main-admin-nav-link">
-                        <ion-icon class="admin-icon" name="people-outline"></ion-icon>
-                        <a asp-controller="Account" onclick="show()" asp-action="GetAllEmployees">Employees</a>
+                        <a class="icon-logout" asp-controller="Account" asp-action="Logout"><ion-icon name="log-out-outline"></ion-icon></a>
                     </li>
-                    <hr />
-                }
 
-
-
-                <li class="main-admin-nav-link">
-                    <a class="icon-logout" asp-controller="Account" asp-action="Logout"><ion-icon name="log-out-outline"></ion-icon> logout</a>
-                </li>
-
-            </ul>
+                </ul>
+           </div>
+           
         </nav>
         <div class="main-content">
             @RenderBody()

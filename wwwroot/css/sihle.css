@@ -1,3 +1,55 @@
 ﻿body {
-    background-color:azure
+    background-color:azure;
+    background-image:url('../images/transparent.png');
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-size:50%;
+    background-position:center;
+
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    background-color: lightgrey;
+    border: none;
+    outline: none;
+    color: black;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+    /* Style the links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover {
+    background-color: #ddd;
 }
