@@ -1,8 +1,12 @@
-﻿@model IEnumerable<Report_a_Fault.Models.Fault>
+﻿@model Report_a_Fault.ViewModel.SearchFaultVM
 
 @{
     ViewData["Title"] = "GetAllFault";
     Layout = "_AdminLayout";
+}
+@{
+    var prevDisabled = !Model.ReportedFault.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.ReportedFault.HasNextPage ? "disabled" : "";
 }
 @for (var i = 0; i < 5; i++)
 {
@@ -12,6 +16,12 @@
 <div class="card-shadow">
     <h1 class="heading-tetiary">Reported Computer Faults</h1>
     <table class="cus-table">
+        <div class="search-bar">
+            <form class="search" method="post">
+                <input class="search-input" asp-for="Search" placeholder="Search fault" />
+                <button type="submit" asp-action="GetAllFault" asp-controller="Fault" asp-route-search="@Model.Search" class="btn-search"><ion-icon name="search-outline"></ion-icon></button>
+            </form>
+        </div>
         <thead>
             <tr>
                 <th>
@@ -38,7 +48,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @foreach (var item in Model.ReportedFault)
             {
                 <tr>
                     <td>
@@ -82,5 +92,27 @@
             }
         </tbody>
     </table>
+    <div class="pagination-bar">
+        <div class="pagination-text">
+            <p>Page @Model.ReportedFault.PageIndex of @Model.ReportedFault.TotalPages</p>
+        </div>
+        <div class="pagination-btn">
+
+            @if (prevDisabled != "disabled")
+            {
+                <a asp-route-pageNumber="@(Model.ReportedFault.PageIndex - 1)" asp-action="Index"><ion-icon class="p-icon" name="chevron-back-outline"></ion-icon></a>
+            }
+
+            @if (nextDisabled != "disabled")
+            {
+                <a asp-route-pageNumber="@(Model.ReportedFault.PageIndex + 1)">   <ion-icon class="p-icon" name="chevron-forward-outline"></ion-icon></a>
+            }
+
+
+        </div>
+
+
+
+    </div>
 </div>
 

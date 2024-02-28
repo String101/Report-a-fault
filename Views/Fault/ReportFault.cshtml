@@ -21,13 +21,13 @@
             <input asp-for="StudentEmail" hidden class="form-control" />
             <input asp-for="Id" hidden class="form-control" />
         
-            <div class="form-group">
+            <div id="editor" contenteditable="true" class="form-group">
                 <strong>
                     <label class="control-label"> DESCRIPTION</label>
                 </strong>
                 <div></div>
                 <br />
-                <input asp-for="FaultDescription" class="form-control" />
+                <textarea asp-for="FaultDescription" class="form-control" style="height: 200px" rows="4" cols="8"></textarea>
                 <span asp-validation-for="FaultDescription" class="text-danger"></span>
             </div>
             <div></div>

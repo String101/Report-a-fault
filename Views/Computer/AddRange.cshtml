@@ -1,0 +1,48 @@
+﻿@model Report_a_Fault.ViewModel.AddComputerRangeVM
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_AdminLayout";
+}
+
+<h1 class="heading-tetiary">ADD NEW COMPUTERS</h1>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="AddRange">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <strong>
+                    <label class="control-label"> COMPUTER NUMBER</label>
+                </strong>
+                <div></div>
+                <br />
+                <input asp-for="NumberOfComputer" class="form-control" />
+                <span asp-validation-for="NumberOfComputer" class="text-danger"></span>
+            </div>
+            <div></div>
+            <br />
+            <div class="form-group">
+                <strong>
+                    <label class="control-label"> LABORATORY NUMBER</label>
+                </strong>
+                <div></div>
+                <br />
+                <select asp-for="LabId" class="form-control" asp-items="Model.BuildingList"></select>
+            </div>
+            <div></div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="ADD" asp-route-labId="@Model.LabId" asp-route-numberOfComputer="@Model.NumberOfComputer" class="btn btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

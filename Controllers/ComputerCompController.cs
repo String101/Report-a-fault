@@ -50,6 +50,7 @@ namespace Report_a_Fault.Controllers
 
             if (ModelState.IsValid && !computerComponentExists)
             {
+              compVM.ComputerComp.Name=  compVM.ComputerComp.Name.ToUpper();
                 _unitOfWork.Computer_Comp.Add(compVM.ComputerComp);
                 _unitOfWork.Save();
                 var computer = _unitOfWork.Computer.Get(u => u.Id == compVM.ComputerComp.ComputerId, includeProperties: "Lab");

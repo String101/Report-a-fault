@@ -8,5 +8,6 @@ namespace Report_a_Fault.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string CampusId { get; set; }
         public string CampusName { get; set; }
+        public DateTime DateOpended { get; set; }
     }
 }

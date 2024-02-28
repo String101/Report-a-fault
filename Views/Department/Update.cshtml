@@ -1,0 +1,43 @@
+﻿@model Report_a_Fault.Models.Department
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "_AdminLayout";
+}
+@for (var i = 0; i < 5; i++)
+{
+    <div></div>
+    <br />
+}
+<h1 class="heading-tetiary">UPDATEING DEPARTMENT</h1>
+<hr />
+
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Update">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DepartmentId" />
+            <div class="form-group">
+                <strong>
+                    <label class="control-label"> DEPARTMENT NAME</label>
+                </strong>
+                <div></div>
+                <br />
+                <input asp-for="DepartmentName" class="form-control" />
+                <span asp-validation-for="DepartmentName" class="text-danger"></span>
+            </div>
+            <div></div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="UPDATE" class="btn btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

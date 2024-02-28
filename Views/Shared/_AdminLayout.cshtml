@@ -84,12 +84,22 @@
                             <a asp-controller="Account" onclick="show()" asp-action="GetAllEmployees">Employees</a>
                         </li>
                         <hr />
+                        <li class="main-admin-nav-link">
+                            <ion-icon class="admin-icon" name="home-outline"></ion-icon>
+                            <a asp-controller="Campus" onclick="show()" asp-action="Index">Campuses</a>
+                        </li>
+                        <hr />
+                        <li class="main-admin-nav-link">
+                            <ion-icon class="admin-icon" name="list-outline"></ion-icon>
+                            <a asp-controller="Department" onclick="show()" asp-action="Index">Departments</a>
+                        </li>
+                        <hr />
                     }
-                    <li class="main-admin-nav-link">
-                        <ion-icon class="admin-icon" name="key-outline"></ion-icon>
-                        <a asp-controller="Account" onclick="show()" asp-action="ForgotPassword">Change Password</a>
-                    </li>
-                    <hr />
+                        <li class="main-admin-nav-link">
+                            <ion-icon class="admin-icon" name="key-outline"></ion-icon>
+                            <a asp-controller="Account" onclick="show()" asp-action="ForgotPassword">Change Password</a>
+                        </li>
+                        <hr />
                     @if (User.IsInRole(SD.Role_Intern))
                     {
                         <li class="main-admin-nav-link">

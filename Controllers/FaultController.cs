@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Report_a_Fault.Interface;
 using Report_a_Fault.Models;
 using Report_a_Fault.ViewModel;
+using System.Drawing.Printing;
 
 namespace Report_a_Fault.Controllers
 {
@@ -21,8 +22,10 @@ namespace Report_a_Fault.Controllers
             _usermanager = usermanager;
         }
         [Authorize(Roles = $"{SD.Role_Super_Admin},{SD.Role_Intern},{SD.Role_Admin},{SD.Role_Student_Assistant}")]
-        public IActionResult GetAllFault()
+        public IActionResult GetAllFault(string search,int ? pageNumber)
         {
+            pageNumber = pageNumber ?? 1;
+            int pageSize = 10;
             var username = _usermanager.GetUserName(User);
 
             var user = _unitOfWork.User.Get(x => x.UserName == username);
@@ -33,10 +36,30 @@ namespace Report_a_Fault.Controllers
                 f.Computer.Lab = _unitOfWork.Lab.Get(o => o.Id == f.Computer.LabId);
                 f.Computer.Lab.Building = _unitOfWork.Building.Get(u => u.BuildingId == f.Computer.Lab.BuildingId);
             }
+            if (search != null)
+            {
+                var list = faults.Where(u => u.Computer.Lab.Building.CampusId == user.CampusId&& u.Id==search.Trim());
 
-            var list = faults.Where(u => u.Computer.Lab.Building.CampusId == user.CampusId);
+                SearchFaultVM vM = new()
+                {
+                    ReportedFault = PaginatedList<Fault>.Create(list.AsQueryable(), pageNumber ?? 1, pageSize)
+                };
 
-            return View(list);
+                return View(vM);
+            }
+            else
+            {
+                var list = faults.Where(u => u.Computer.Lab.Building.CampusId == user.CampusId);
+
+                SearchFaultVM vM = new()
+                {
+                    ReportedFault = PaginatedList<Fault>.Create(list.AsQueryable(), pageNumber ?? 1, pageSize)
+                };
+
+                return View(vM);
+            }
+
+           
         }
         [HttpGet]
         [Authorize(Roles =SD.Role_Student_Assistant)]
@@ -70,6 +93,7 @@ namespace Report_a_Fault.Controllers
             if (fault != null)
             {
                 fault.Id = Guid.NewGuid().ToString();
+                fault.FaultDescription= fault.FaultDescription.ToUpper();
                 _unitOfWork.Fault.Add(fault);
                 var computer = _unitOfWork.Computer.Get(u => u.Id == fault.computerId, includeProperties: "Lab,Computer_Comps");
                 computer.ComputerComponentStatus = SD.StatusFaulty;
@@ -106,10 +130,15 @@ namespace Report_a_Fault.Controllers
             computerFault.InternEmail = username;
             computerFault.DateUpdate = DateTime.Now;
             _unitOfWork.Computer.Update(computerFromDb);
-            var p = _unitOfWork.Assign.Get(u => u.FaultId == computerFault.Id);
+            var p = _unitOfWork.Assign.GetAll(u => u.FaultId == computerFault.Id);
             if (computerFromDb.ComputerComponentStatus == SD.StatusHealty)
             {
-                _unitOfWork.Assign.Remove(p);
+                if(p!=null)
+                foreach(var i in p)
+                {
+                        _unitOfWork.Assign.Remove(i);
+                }
+               
                
                 _unitOfWork.Fault.Remove(computerFault);
                
@@ -167,10 +196,29 @@ namespace Report_a_Fault.Controllers
           
             if(ModelState.IsValid)
             {
-                vM.FaultAssign.Id = Guid.NewGuid().ToString();
-                _unitOfWork.Assign.Add(vM.FaultAssign);
-                _unitOfWork.Save();
-                return RedirectToAction("Index", "Building");
+                bool IntenAssigned = _unitOfWork.Assign.Any(u => u.FaultId == vM.FaultAssign.FaultId && u.InternId == vM.FaultAssign.InternId);
+                int InterAssigment = _unitOfWork.Assign.GetAll(u =>u.InternId == vM.FaultAssign.InternId).Count();
+                if (!IntenAssigned )
+                {
+                    if( InterAssigment <= 2 )
+                    {
+                        vM.FaultAssign.Id = Guid.NewGuid().ToString();
+                        _unitOfWork.Assign.Add(vM.FaultAssign);
+                        _unitOfWork.Save();
+                        return RedirectToAction("Index", "Building");
+                    }else
+                    {
+                        TempData["error"] = "Oops Sorry! Intern unavailable";
+                        return RedirectToAction("Index", "Building");
+                    }
+                  
+                }
+                else
+                {
+                    TempData["error"] = "Intern is already assigned to this fault.";
+                    return RedirectToAction("Index", "Building");
+                }
+              
             }
             
             return View(vM);

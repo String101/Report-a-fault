@@ -44,7 +44,7 @@ namespace Report_a_Fault.Repositories
                 }
 
             }
-            return query.FirstOrDefault();
+            return query.FirstOrDefault()!;
         }
 
         public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)

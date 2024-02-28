@@ -26,7 +26,7 @@ namespace Report_a_Fault.Controllers
             return View(buildings);
         }
         [HttpGet]
-        [Authorize(Roles =SD.Role_Intern)]
+        [Authorize(Roles = $"{SD.Role_Super_Admin},{SD.Role_Intern},{SD.Role_Admin}")]
         public IActionResult Create()
         {
             var username = _usermanager.GetUserName(User);
@@ -38,13 +38,14 @@ namespace Report_a_Fault.Controllers
             return View(building);
         }
         [HttpPost]
-        [Authorize(Roles = SD.Role_Intern)]
+        [Authorize(Roles = $"{SD.Role_Super_Admin},{SD.Role_Intern},{SD.Role_Admin}")]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Building building)
         {
             ModelState.Remove("BuildingId");
             if (ModelState.IsValid)
             {
+                building.BuildingName=building.BuildingName.ToUpper();
                 building.BuildingId = Guid.NewGuid().ToString();
                 _unitOfWork.Building.Add(building);
                 _unitOfWork.Save();
@@ -90,5 +91,7 @@ namespace Report_a_Fault.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        
     }
 }

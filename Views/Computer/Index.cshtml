@@ -1,8 +1,12 @@
-﻿@model Report_a_Fault.ViewModel.ComputerBuildingVM
+﻿@model Report_a_Fault.ViewModel.SearchComputerVM
 
 @{
     ViewData["Title"] = "Index";
     Layout = "_AdminLayout";
+}
+@{
+    var prevDisabled = !Model.Computers.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Computers.HasNextPage ? "disabled" : "";
 }
 @for (var i = 0; i < 5; i++)
 {
@@ -14,19 +18,34 @@
     <h1 class="heading-tetiary">Laboratory Computers</h1>
     @if(User.IsInRole(SD.Role_Intern))
     {
-        <div class="add-new-subject">
-
-            <a asp-controller="Computer" asp-action="Create" asp-route-id="@Model.BuildingId" class="add-new-subject-btn">
-                <div class="inner-btn">
-                    <ion-icon class="icon" name="add-outline"></ion-icon>
-                    <p>Add New Computer</p>
-                </div>
-            </a>
-
+        <div class="row1">
+            <div class="add-new-subject">
+                <a asp-controller="Computer" asp-action="Create" asp-route-id="@Model.LabIdentityNumber" class="add-new-subject-btn">
+                    <div class="inner-btn">
+                        <ion-icon class="icon" name="add-outline"></ion-icon>
+                        <p>Add New Computer</p>
+                    </div>
+                </a>
+            </div>
+            <div class="add-new-subject">
+                <a asp-controller="Computer" asp-action="AddRange" asp-route-id="@Model.LabIdentityNumber" class="add-new-subject-btn">
+                    <div class="inner-btn">
+                        <ion-icon class="icon" name="add-outline"></ion-icon>
+                        <p>Add New Computers</p>
+                    </div>
+                </a>
+            </div>
         </div>
+        
     }
    
     <table class="cus-table">
+        <div class="search-bar">
+            <form class="search" method="post">
+                <input class="search-input" asp-for="Search" placeholder="Search Computer" />
+                <button type="submit" asp-action="Index" asp-controller="Computer" asp-route-search="@Model.Search" class="btn-search"><ion-icon name="search-outline"></ion-icon></button>
+            </form>
+        </div>
         <thead>
             <tr>
                 <th>
@@ -80,6 +99,28 @@
             }
         </tbody>
     </table>
+    <div class="pagination-bar">
+        <div class="pagination-text">
+            <p>Page @Model.Computers.PageIndex of @Model.Computers.TotalPages</p>
+        </div>
+        <div class="pagination-btn">
+
+            @if (prevDisabled != "disabled")
+            {
+                <a asp-route-pageNumber="@(Model.Computers.PageIndex - 1)" asp-action="Index"><ion-icon class="p-icon" name="chevron-back-outline"></ion-icon></a>
+            }
+
+            @if (nextDisabled != "disabled")
+            {
+                <a asp-route-pageNumber="@(Model.Computers.PageIndex + 1)">   <ion-icon class="p-icon" name="chevron-forward-outline"></ion-icon></a>
+            }
+
+
+        </div>
+
+
+
+    </div>
 </div>
 
 

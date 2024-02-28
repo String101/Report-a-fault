@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <form method="post">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div asp-validation-summary="All" class="text-danger"></div>
                         <br />
                         <div class="form-floating mb-3">
                             <input asp-for="Email" class="form-control" aria-required="true" />
@@ -51,7 +51,39 @@
     </div>
 </div>
 
+@if (@TempData["Success"] != null)
+{
+    <script>
 
+
+        jSuites.notification({
+            name: 'Notification',
+            message: '@TempData["Success"]',
+        });
+
+    </script>
+}
+@if (TempData["Error"] != null)
+{
+    <script>
+        jSuites.notification({
+            error: 1,
+            name: 'Error message',
+            message: '@TempData["error"]',
+        });
+    </script>
+}
+<script>
+    var show = function () {
+        // Show the loading spin
+        jSuites.loading.show();
+        // Hide the loading spin after two seconds
+        setTimeout(function () {
+            // Hide
+            jSuites.loading.hide();
+        }, 2000);
+    }
+</script>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

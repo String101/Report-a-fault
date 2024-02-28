@@ -22,38 +22,6 @@ namespace Report_a_Fault.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Department>().HasData(
-
-                new Department
-                {
-                    DepartmentId = Guid.NewGuid().ToString(),
-                    DepartmentName = "Department of Built Environment"
-                },
-                 new Department
-                 {
-                     DepartmentId = Guid.NewGuid().ToString(),
-                     DepartmentName = "Department of Civil Engineering"
-                 }, new Department
-                 {
-                     DepartmentId = Guid.NewGuid().ToString(),
-                     DepartmentName = "Department of Electrical, Electronic and Computer Engineering"
-                 },
-                 new Department
-                 {
-                     DepartmentId = Guid.NewGuid().ToString(),
-                     DepartmentName = "Department of Mechanical and Mechatronic Engineering"
-                 }, new Department
-                 {
-                     DepartmentId = Guid.NewGuid().ToString(),
-                     DepartmentName = "Department of Mathematical and Physical Sciences"
-                 },
-                 new Department
-                 {
-                     DepartmentId = Guid.NewGuid().ToString(),
-                     DepartmentName = "Department of Information Technology"
-                 }
-
-                );
         }
         public DbSet<Report_a_Fault.Models.Building> Building { get; set; } = default!;
         public DbSet<Report_a_Fault.Models.AssignJob> AssignJob { get; set; } = default!;

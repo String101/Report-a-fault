@@ -1,4 +1,4 @@
-﻿@model Report_a_Fault.ViewModel.LabsBuildingVM
+﻿@model Report_a_Fault.ViewModel.SearchLabVM
 
 @{
     ViewData["Title"] = "Index";
@@ -15,7 +15,7 @@
     {
         <div class="add-new-subject">
 
-            <a asp-controller="Lab" asp-action="Create" asp-route-buildingId="@Model.BuildindId" class="add-new-subject-btn">
+            <a asp-controller="Lab" asp-action="Create" asp-route-buildingId="@Model.labNumber" class="add-new-subject-btn">
                 <div class="inner-btn">
                     <ion-icon class="icon" name="add-outline"></ion-icon>
                     <p>Add New Lab</p>
@@ -26,6 +26,12 @@
     }
    
     <table class="cus-table">
+        <div class="search-bar">
+            <form class="search" method="post">
+                <input class="search-input" asp-for="Search" placeholder="Search Lab" />
+                <button type="submit" asp-action="Index" asp-controller="Lab" asp-route-search="@Model.Search" asp-route-buildingId="@Model.labNumber" class="btn-search"><ion-icon name="search-outline"></ion-icon></button>
+            </form>
+        </div>
         <thead>
             <tr>
                 <th>
@@ -38,7 +44,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Lab)
+            @foreach (var item in Model.AllBuildingLabs)
             {
                 <tr>
                     <td>

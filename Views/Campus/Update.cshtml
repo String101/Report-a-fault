@@ -2,31 +2,38 @@
 
 @{
     ViewData["Title"] = "Update";
+    Layout = "_AdminLayout";
 }
-
-<h1>Update</h1>
-
-<h4>Campus</h4>
+@for (var i = 0; i < 5; i++)
+{
+    <div></div>
+    <br />
+}
+<h1 class="heading-tetiary">UPDATEING CAMPUS</h1>
 <hr />
+
+
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
         <form asp-action="Update">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CampusId" />
             <div class="form-group">
-                <label asp-for="CampusName" class="control-label"></label>
+                <strong>
+                    <label class="control-label"> CAMPUS NAME</label>
+                </strong>
+                <div></div>
+                <br />
                 <input asp-for="CampusName" class="form-control" />
                 <span asp-validation-for="CampusName" class="text-danger"></span>
             </div>
+            <div></div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="UPDATE" class="btn btn-dark" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -37,53 +37,33 @@ namespace Report_a_Fault.Data
                     Campus campusW = new()
                     {
                         CampusId = Guid.NewGuid().ToString(),
-                        CampusName = "WELKOM"
+                        CampusName = "WELKOM",
+                        DateOpended=DateTime.Now
+      
                     };
                     _unitOfWork.Campus.Add(campusW);
 
-                    Campus campusB = new()
-                    {
-                        CampusId = Guid.NewGuid().ToString(),
-                        CampusName = "BLOEMFONTEIN"
-                    };
-                    _unitOfWork.Campus.Add(campusB);
-                    _unitOfWork.Save();
-
                     _userManager.CreateAsync(new ApplicationUser
                     {
-                        Name="Test",
-                        Usersurname="Test1",
-                        UserName = "sbongakonkesihle31@gmail.com",
-                        Email = "sbongakonkesihle31@gmail.com",
+                        Name="ANELE",
+                        Usersurname="MAVUNDLA",
+                        UserName = "aneleymavundla@gmail.com",
+                        Email = "aneleymavundla@gmail.com",
                         EmailConfirmed = true,
                         PhoneNumber = "0657290039",
-                        NormalizedUserName = "SBONGAKONKESIHLE31@GMAIL.COM",
-                        NormalizedEmail = "SBONGAKONKESIHLE31@GMAIL.COM",
+                        NormalizedUserName = "ANELEYMAVUNDLA@GMAIL.COM",
+                        NormalizedEmail = "ANELEYMAVUNDLA@GMAIL.COM",
                        CampusId = campusW.CampusId,
                        Role=SD.Role_Super_Admin
                     }, "Developer@Admin12343").GetAwaiter().GetResult();
-                    _userManager.CreateAsync(new ApplicationUser
-                    {
-                        Name = "Test2",
-                        Usersurname = "Test2",
-                        UserName = "thusisihle01@gmail.com",
-                        Email = "thusisihle01@gmail.com",
-                        EmailConfirmed = true,
-                        PhoneNumber = "0657290039",
-                        NormalizedUserName = "THUSISIHLE01@GMAIL.COM",
-                        NormalizedEmail = "THUSISIHLE01@GMAIL.COM",
-                        CampusId = campusB.CampusId,
-                        Role = SD.Role_Super_Admin
-                    }, "Developer@Admin12343").GetAwaiter().GetResult();
+                    
 
 
 
 
-                    ApplicationUser developer = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "sbongakonkesihle31@gmail.com");
+                    ApplicationUser developer = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "aneleymavundla@gmail.com");
                     _userManager.AddToRoleAsync(developer, SD.Role_Super_Admin).GetAwaiter().GetResult();
 
-                    ApplicationUser developer2 = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "thusisihle01@gmail.com");
-                    _userManager.AddToRoleAsync(developer2, SD.Role_Super_Admin).GetAwaiter().GetResult();
                 }
             }
 

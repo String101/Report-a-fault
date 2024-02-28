@@ -48,47 +48,43 @@ namespace Report_a_Fault.Controllers
             {
                 var user =_unitOfWork.User.Get(u=>u.Email==loginVM.Email);
 
-                
-                if (user.Enabled)
+
+                var result = await _signinManager.
+                    PasswordSignInAsync(loginVM.Email, loginVM.Password, false, lockoutOnFailure: false);
+
+                if (result.Succeeded)
                 {
-                    var result = await _signinManager.
-                    PasswordSignInAsync(loginVM.Email, loginVM.Password,false, lockoutOnFailure: false);
-
-                    if (result.Succeeded)
+                    if (!string.IsNullOrEmpty(loginVM.RedirectUrl))
                     {
-                        if (!string.IsNullOrEmpty(loginVM.RedirectUrl))
+                        if (User.IsInRole(SD.Role_Admin))
                         {
-                            if (User.IsInRole(SD.Role_Admin))
-                            {
-                                return RedirectToAction("Index", "Building");
-                            }
-                            else if (User.IsInRole(SD.Role_Intern))
-                            {
-                                return RedirectToAction("Index", "Building");
-                            }
-                            else if (User.IsInRole(SD.Role_Student_Assistant))
-                            {
-                                return RedirectToAction("Index", "Building");
-                            }
-                            else if (User.IsInRole(SD.Role_Super_Admin))
-                            {
-                                return RedirectToAction("Index", "Building");
-                            }
+                            return RedirectToAction("Index", "Building");
                         }
-                        else
+                        else if (User.IsInRole(SD.Role_Intern))
                         {
-                            return NotFound();
+                            return RedirectToAction("Index", "Building");
                         }
-
+                        else if (User.IsInRole(SD.Role_Student_Assistant))
+                        {
+                            return RedirectToAction("Index", "Building");
+                        }
+                        else if (User.IsInRole(SD.Role_Super_Admin))
+                        {
+                            return RedirectToAction("Index", "Building");
+                        }
                     }
                     else
                     {
-                        TempData["error"] = "Invalid login credentials.";
+                        return NotFound();
                     }
+
                 }
                 else
                 {
-                    TempData["error"] = "Account has been blocked.";
+                    ModelState.AddModelError("", "Invalid login credentials.");
+                    TempData["error"] = "Invalid login credentials.";
+                    TempData["error"] = "Intern is already assigned to this fault.";
+                    return RedirectToAction("Index", "Home");
                 }
 
             }
@@ -197,7 +193,7 @@ namespace Report_a_Fault.Controllers
                 }),
                 DepartmentList =_unitOfWork.Department.GetAll().Select(d => new SelectListItem
                 {
-                    Text = d.DepartmentName,
+                    Text = d.DepartmentName.ToUpper(),
                     Value = d.DepartmentId,
                 })
                 
@@ -216,8 +212,8 @@ namespace Report_a_Fault.Controllers
                     {
                         UserName = addUserVM.Email,
                         Email = addUserVM.Email,
-                        Name = addUserVM.Name,
-                        Usersurname = addUserVM.Surname,
+                        Name = addUserVM.Name.ToUpper(),
+                        Usersurname = addUserVM.Surname.ToUpper(),
                         EmailConfirmed = true,
                         NormalizedEmail = addUserVM.Email,
                         Role = addUserVM.Role,
@@ -270,9 +266,14 @@ namespace Report_a_Fault.Controllers
             var username = _usermanager.GetUserName(User);
             var user =_unitOfWork.User.Get(u=>u.Email==username);
 
+            if(user.Role==SD.Role_Admin)
+            {
+                var employeess = _unitOfWork.User.GetAll(u => u.Role != SD.Role_Super_Admin&&u.Role!=SD.Role_Admin && u.CampusId==user.CampusId, includeProperties: "Campus,Department").OrderBy(i => i.Role);
+                return View("GetAllEmployees", employeess);
+            }
+            var employees = _unitOfWork.User.GetAll(u => u.Role != SD.Role_Super_Admin, includeProperties: "Campus,Department").OrderBy(i => i.Role);
+            return View("GetAllEmployees", employees);
 
-            var employees = _unitOfWork.User.GetAll(u=>u.CampusId==user.CampusId&& u.Role!=SD.Role_Super_Admin,includeProperties: "Campus,Department");
-            return View("GetAllEmployees",employees);
         }
         [Authorize(Roles = $"{SD.Role_Admin},{SD.Role_Super_Admin}")]
         public bool BlockUser(string email)

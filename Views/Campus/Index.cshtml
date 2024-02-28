@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Report_a_Fault.Models.Campus>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_AdminLayout";
+}
+
+@for (var i = 0; i < 5; i++)
+{
+    <div></div>
+    <br />
+}
+<div class="card-shadow">
+    <h1 class="heading-tetiary">Central University of Technology Campuses</h1>
+    @if (User.IsInRole(SD.Role_Admin)||User.IsInRole(SD.Role_Super_Admin))
+    {
+        <div class="add-new-subject">
+
+            <a asp-controller="Campus" asp-action="Add" class="add-new-subject-btn">
+                <div class="inner-btn">
+                    <ion-icon class="icon" name="add-outline"></ion-icon>
+                    <p>Add New Campus</p>
+                </div>
+            </a>
+
+        </div>
+    }
+
+    <table class="cus-table">
+        <thead>
+            <tr>
+             
+                <th>
+                    CAMPUS NAME
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                 
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CampusName)
+                    </td>
+
+                    <td>
+                        <div class="actions">
+                            <a asp-action="Delete" asp-controller="Campus" asp-route-id="@item.CampusId">Delete</a>
+                            <hr />
+                            <a asp-action="Details" asp-controller="Campus" asp-route-id="@item.CampusId">Details</a>
+                            <hr />
+                            <a asp-action="Update" asp-controller="Campus" asp-route-id="@item.CampusId">Update</a>
+                            <hr />
+                        </div>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+

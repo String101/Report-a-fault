@@ -13,7 +13,7 @@ primary :
 }
 
 html {
-    font-size: 55.5%;
+    font-size: 60%;
     scroll-behavior: smooth;
     overflow-x: auto;
 }
@@ -467,4 +467,10 @@ a {
     color: #ffffff;
     border-radius: 50%;
     margin: 1px;
+}
+
+.row1 {
+    display: flex;
+    justify-content: end; /* Adjust alignment as needed */
+    gap: 20px; /* Adjust space between buttons as needed */
 }

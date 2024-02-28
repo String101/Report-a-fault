@@ -297,6 +297,9 @@ namespace Report_a_Fault.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("DateOpended")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("CampusId");
 
                     b.ToTable("Campuses");
@@ -373,38 +376,6 @@ namespace Report_a_Fault.Migrations
                     b.HasKey("DepartmentId");
 
                     b.ToTable("Department");
-
-                    b.HasData(
-                        new
-                        {
-                            DepartmentId = "c24a3cc3-8084-4478-93ba-0dd567ba32ff",
-                            DepartmentName = "Department of Built Environment"
-                        },
-                        new
-                        {
-                            DepartmentId = "781ef49f-71ac-4f2a-8488-d4858c722c85",
-                            DepartmentName = "Department of Civil Engineering"
-                        },
-                        new
-                        {
-                            DepartmentId = "c83e721e-dd9b-4d1b-b6d2-5252e2771280",
-                            DepartmentName = "Department of Electrical, Electronic and Computer Engineering"
-                        },
-                        new
-                        {
-                            DepartmentId = "391c67d4-a781-4ce7-81bf-fff92bbe654a",
-                            DepartmentName = "Department of Mechanical and Mechatronic Engineering"
-                        },
-                        new
-                        {
-                            DepartmentId = "ed7d5692-8bbc-4179-a022-12a8e27ebfb3",
-                            DepartmentName = "Department of Mathematical and Physical Sciences"
-                        },
-                        new
-                        {
-                            DepartmentId = "c0668fd6-4f12-4089-9353-14b19b53ab1a",
-                            DepartmentName = "Department of Information Technology"
-                        });
                 });
 
             modelBuilder.Entity("Report_a_Fault.Models.Fault", b =>

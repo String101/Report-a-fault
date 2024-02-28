@@ -20,15 +20,28 @@ namespace Report_a_Fault.Controllers
             _usermanager = usermanager;
         }
         [Authorize(Roles = $"{SD.Role_Admin},{SD.Role_Super_Admin},{SD.Role_Intern},{SD.Role_Student_Assistant}")]
-        public IActionResult Index(string buildingId)
+        public IActionResult Index(string buildingId,string search)
         {
             var labs = _unitOfWork.Lab.GetAll(c => c.BuildingId == buildingId, includeProperties: "Building").OrderBy(u => u.LabNumber);
-            LabsBuildingVM labsBuildingVM = new()
+            if(search != null)
             {
-                Lab = labs,
-                BuildindId = buildingId,
-            };
-            return View(labsBuildingVM);
+                SearchLabVM vM = new()
+                {
+                    AllBuildingLabs = labs.Where(u=>u.LabNumber==search),
+                    labNumber = buildingId
+                };
+                return View(vM);
+            }
+            else
+            {
+                SearchLabVM vM = new()
+                {
+                    AllBuildingLabs = labs,
+                    labNumber = buildingId
+                };
+                return View(vM);
+            }
+            
         }
         [HttpGet]
         public IActionResult create(string buildingId)

@@ -12,7 +12,7 @@
 }
 <div class="card-shadow" >
     <h1 class="heading-tetiary">Campus Buildings</h1>
-    @if (User.IsInRole(SD.Role_Intern))
+    @if (User.IsInRole(SD.Role_Super_Admin)||User.IsInRole(SD.Role_Admin))
     {
         <div class="add-new-subject">
 
